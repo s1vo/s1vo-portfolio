@@ -13,10 +13,6 @@ const contacts = [
         link: 'mailto:s1vo13@yandex',
     },
     {
-        icon: 'location_on',
-        text: 'Москва, м. Таганская, 4-й Проспект Просвещения, 13А',
-    },
-    {
         icon: 'fa-brands fa-github',
         text: 'github.com/s1vo',
         link: 'https://github.com/s1vo',

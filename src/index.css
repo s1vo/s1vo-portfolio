@@ -5,3 +5,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.85);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+.motion-safe\:animate-fadeInUp {
+    @apply motion-safe:animate-none;
+    animation: fadeInUp 1s cubic-bezier(0.22, 1, 0.36, 1);
+}

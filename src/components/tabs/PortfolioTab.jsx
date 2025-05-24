@@ -64,8 +64,8 @@ const PortfolioTab = () => {
                                         key={j}
                                         className="px-3 py-1 bg-primary-50 text-primary-700 text-xs rounded-full border border-primary-100 hover:bg-primary-100 transition-all"
                                     >
-                    {tag}
-                  </span>
+                                        {tag}
+                                    </span>
                                 ))}
                             </div>
 
