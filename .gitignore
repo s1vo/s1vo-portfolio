@@ -3,3 +3,25 @@ dist
 .vite
 .DS_Store
 .idea/
+
+# logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# env files
+.env
+.env.*
+!.env.example
+
+# caches and reports
+coverage
+*.tsbuildinfo
+
+# editor
+.vscode/
+
+# os
+Thumbs.db
