@@ -361,30 +361,23 @@ export const processSteps = [
 
 export const contacts = [
   {
-    href: 'mailto:mikhail@sivokon.dev',
+    href: 'mailto:s1vo13@yandex.ru',
     icon: '✉️',
     label: 'Email',
-    value: 'mikhail@sivokon.dev',
+    value: 's1vo13@yandex.ru',
   },
   {
-    href: 'https://t.me/sivokon',
+    href: 'https://t.me/s1vo13',
     icon: '✈️',
     label: 'Telegram',
-    value: '@sivokon',
+    value: '@s1vo13',
     blank: true,
   },
   {
-    href: 'https://github.com/sivokon',
+    href: 'https://github.com/s1vo',
     icon: '🐙',
     label: 'GitHub',
-    value: 'github.com/sivokon',
-    blank: true,
-  },
-  {
-    href: 'https://linkedin.com/in/sivokon',
-    icon: '💼',
-    label: 'LinkedIn',
-    value: 'linkedin.com/in/sivokon',
+    value: 'github.com/s1vo',
     blank: true,
   },
 ];

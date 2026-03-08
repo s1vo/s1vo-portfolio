@@ -341,6 +341,7 @@ a { text-decoration: none; color: inherit; }
   padding: 0 12px; gap: 14px;
   font-family: var(--mono); font-size: 11px;
   color: #000; font-weight: 600; z-index: 50;
+  overflow: hidden; white-space: nowrap;
 }
 .sb-i { opacity: .65; }
 .sb-i.hl { opacity: 1; }
@@ -359,10 +360,15 @@ a { text-decoration: none; color: inherit; }
   .contact-grid { grid-template-columns: 1fr; }
   .hero-name { font-size: 32px; }
   .tb-tabs { display: none; }
+  .statusbar { font-size: 10px; gap: 8px; padding: 0 8px; }
+  .sb-right { gap: 8px; }
 }
 @media (max-width: 560px) {
   .process { grid-template-columns: 1fr 1fr; }
   .tech-grid { grid-template-columns: 1fr 1fr; }
+  .statusbar { font-size: 9px; gap: 4px; padding: 0 6px; }
+  .sb-sep { display: none; }
+  .sb-right { display: none; }
 }
 
 /* ─── ANIMATIONS ─────────────────────────────── */
