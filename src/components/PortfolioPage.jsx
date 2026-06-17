@@ -1,3 +1,4 @@
+import { Mail, Play } from 'lucide-react';
 import {
   aboutParagraphs,
   approachItems,
@@ -14,6 +15,11 @@ import {
   whatIDoCards,
   whyItems,
 } from '../data/portfolioData';
+
+function Icon({ icon: IconCmp, size = 14 }) {
+  if (!IconCmp) return null;
+  return <IconCmp size={size} strokeWidth={1.75} style={{ display: 'block' }} />;
+}
 
 function SectionHeader({ cmd, title, sub }) {
   return (
@@ -97,14 +103,14 @@ export default function PortfolioPage() {
               href={tab.href}
               className={`tb-tab${idx === 0 ? ' active' : ''}`}
             >
-              <span>{tab.icon}</span> {tab.label}
+              <Icon icon={tab.icon} size={13} /> {tab.label}
             </a>
           ))}
         </div>
 
         <div className="tb-right">
           <div className="tb-online" />
-          <span>доступен для проектов</span>
+          <span>открыт к предложениям</span>
         </div>
       </div>
 
@@ -119,7 +125,9 @@ export default function PortfolioPage() {
                   href={item.href}
                   className={`sb-item${groupIdx === 0 && itemIdx === 0 ? ' active' : ''}${item.sub ? ' sub' : ''}`}
                 >
-                  <span className="ic">{item.icon}</span>
+                  <span className="ic" style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Icon icon={item.icon} size={13} />
+                  </span>
                   {item.label}
                 </a>
               ))}
@@ -134,6 +142,7 @@ export default function PortfolioPage() {
 
         <div className="main">
           <section className="hero" id="hero">
+            <div className="hero-main">
             <div className="hero-badges">
               {heroBadges.map((badge) => (
                 <span key={badge.text} className={badge.className}>
@@ -147,23 +156,25 @@ export default function PortfolioPage() {
             <div className="hero-name" data-glitch="Михаил Сивоконь">
               <span className="accent">Михаил</span> Сивоконь
             </div>
-            <div className="hero-role">Fullstack Developer &amp; Technical Lead</div>
+            <div className="hero-role">Technical Director (CTO) &amp; Head of Development</div>
             <div className="hero-desc">
-              Проектирую и разрабатываю сложные веб-системы — от архитектуры до деплоя.
-              Специализируюсь на высоконагруженных приложениях, аналитических платформах и
-              корпоративных решениях. Закрываю весь стек самостоятельно.
+              Проектирую и развиваю корпоративные и государственные информационные системы — от
+              архитектуры и технической стратегии до запуска изменений в production. Руководил
+              командой до 10 разработчиков, модернизирую legacy и сохраняю практическое участие в
+              коде, API, базах данных и инфраструктуре.
             </div>
 
             <div className="hero-btns">
               <a href="#projects" className="btn btn-primary">
-                <span>▸</span> посмотреть проекты
+                <Play size={13} strokeWidth={1.75} /> посмотреть проекты
               </a>
               <a href="#contact" className="btn btn-ghost">
-                <span>✉</span> написать
+                <Mail size={13} strokeWidth={1.75} /> написать
               </a>
             </div>
 
             <Prompt cursor />
+            </div>
           </section>
 
           <div className="stats">
@@ -179,7 +190,7 @@ export default function PortfolioPage() {
             <SectionHeader
               cmd="cat about.md"
               title="Обо мне"
-              sub="# fullstack-developer · technical-lead · 8+ years"
+              sub="# technical-director · head-of-development · 8+ years"
             />
 
             <div className="about-grid">
@@ -202,53 +213,60 @@ export default function PortfolioPage() {
                   </div>
                   <div>
                     <span className="ln">2</span>&nbsp;&nbsp;<span className="prp">role</span>
-                    <span className="pnc">:</span> <span className="str">'Fullstack Dev / Tech Lead'</span>
+                    <span className="pnc">:</span> <span className="str">'Technical Director / CTO'</span>
                     <span className="pnc">,</span>
                   </div>
                   <div>
-                    <span className="ln">3</span>&nbsp;&nbsp;<span className="prp">exp</span>
+                    <span className="ln">3</span>&nbsp;&nbsp;<span className="prp">experience</span>
                     <span className="pnc">:</span> <span className="str">'8+ years'</span>
                     <span className="pnc">,</span>
                   </div>
                   <div>
-                    <span className="ln">4</span>&nbsp;&nbsp;<span className="prp">focus</span>
+                    <span className="ln">4</span>&nbsp;&nbsp;<span className="prp">career</span>
                     <span className="pnc">: [</span>
                   </div>
                   <div>
                     <span className="ln">5</span>&nbsp;&nbsp;&nbsp;&nbsp;<span className="str">
-                      'highload systems'
+                      'Junior'
                     </span>
-                    <span className="pnc">,</span>
+                    <span className="pnc">,</span> <span className="str">'Middle'</span>
+                    <span className="pnc">,</span> <span className="str">'Senior / Team Lead'</span>
+                    <span className="pnc">,</span> <span className="str">'CTO'</span>
                   </div>
                   <div>
-                    <span className="ln">6</span>&nbsp;&nbsp;&nbsp;&nbsp;<span className="str">
-                      'analytics platforms'
-                    </span>
-                    <span className="pnc">,</span>
+                    <span className="ln">6</span>&nbsp;&nbsp;<span className="pnc">],</span>
                   </div>
                   <div>
-                    <span className="ln">7</span>&nbsp;&nbsp;&nbsp;&nbsp;<span className="str">
+                    <span className="ln">7</span>&nbsp;&nbsp;<span className="prp">focus</span>
+                    <span className="pnc">: [</span>
+                  </div>
+                  <div>
+                    <span className="ln">8</span>&nbsp;&nbsp;&nbsp;&nbsp;<span className="str">
                       'system architecture'
                     </span>
+                    <span className="pnc">,</span> <span className="str">'team leadership'</span>
                     <span className="pnc">,</span>
                   </div>
                   <div>
-                    <span className="ln">8</span>&nbsp;&nbsp;&nbsp;&nbsp;<span className="str">'devops'</span>
+                    <span className="ln">9</span>&nbsp;&nbsp;&nbsp;&nbsp;<span className="str">
+                      'legacy modernization'
+                    </span>
+                    <span className="pnc">,</span> <span className="str">'integrations'</span>
                   </div>
                   <div>
-                    <span className="ln">9</span>&nbsp;&nbsp;<span className="pnc">],</span>
+                    <span className="ln">10</span>&nbsp;&nbsp;<span className="pnc">],</span>
                   </div>
                   <div>
-                    <span className="ln">10</span>&nbsp;&nbsp;<span className="prp">available</span>
+                    <span className="ln">11</span>&nbsp;&nbsp;<span className="prp">teamSize</span>
+                    <span className="pnc">:</span> <span className="kw">10</span>
+                    <span className="pnc">,</span>
+                  </div>
+                  <div>
+                    <span className="ln">12</span>&nbsp;&nbsp;<span className="prp">handsOn</span>
                     <span className="pnc">:</span> <span className="kw">true</span>
-                    <span className="pnc">,</span>
                   </div>
                   <div>
-                    <span className="ln">11</span>&nbsp;&nbsp;<span className="prp">location</span>
-                    <span className="pnc">:</span> <span className="str">'Remote / Worldwide'</span>
-                  </div>
-                  <div>
-                    <span className="ln">12</span>
+                    <span className="ln">13</span>
                     <span className="pnc">{'}'}</span>
                   </div>
                 </div>
@@ -261,7 +279,7 @@ export default function PortfolioPage() {
             <div className="cards">
               {whatIDoCards.map((card) => (
                 <div className="card" key={card.title}>
-                  <div className="card-icon">{card.icon}</div>
+                  <div className="card-icon"><Icon icon={card.icon} size={20} /></div>
                   <div className="card-title">{card.title}</div>
                   <div className="card-desc">{card.desc}</div>
                 </div>
@@ -282,14 +300,21 @@ export default function PortfolioPage() {
                   <span className="pnc">{'{'}</span>
                 </div>
                 <div>
-                  &nbsp;&nbsp;<span className="str">"frontend"</span>
+                  &nbsp;&nbsp;<span className="str">"management"</span>
                   <span className="pnc">: [</span>
-                  <span className="str">"React"</span>
-                  <span className="pnc">,</span> <span className="str">"Next.js"</span>
-                  <span className="pnc">,</span> <span className="str">"TypeScript"</span>
-                  <span className="pnc">,</span> <span className="str">"JavaScript"</span>
-                  <span className="pnc">,</span> <span className="str">"SCSS"</span>
-                  <span className="pnc">,</span> <span className="str">"Tailwind"</span>
+                  <span className="str">"Technical Strategy"</span>
+                  <span className="pnc">,</span> <span className="str">"Team Leadership"</span>
+                  <span className="pnc">,</span> <span className="str">"Planning"</span>
+                  <span className="pnc">,</span> <span className="str">"Code Review"</span>
+                  <span className="pnc">],</span>
+                </div>
+                <div>
+                  &nbsp;&nbsp;<span className="str">"architecture"</span>
+                  <span className="pnc">: [</span>
+                  <span className="str">"System Design"</span>
+                  <span className="pnc">,</span> <span className="str">"REST / SOAP"</span>
+                  <span className="pnc">,</span> <span className="str">"Legacy Modernization"</span>
+                  <span className="pnc">,</span> <span className="str">"Integrations"</span>
                   <span className="pnc">],</span>
                 </div>
                 <div>
@@ -297,38 +322,26 @@ export default function PortfolioPage() {
                   <span className="pnc">: [</span>
                   <span className="str">"Node.js"</span>
                   <span className="pnc">,</span> <span className="str">"NestJS"</span>
-                  <span className="pnc">,</span> <span className="str">"Express.js"</span>
+                  <span className="pnc">,</span> <span className="str">"Laravel"</span>
                   <span className="pnc">,</span> <span className="str">"PHP"</span>
                   <span className="pnc">],</span>
                 </div>
                 <div>
-                  &nbsp;&nbsp;<span className="str">"databases"</span>
+                  &nbsp;&nbsp;<span className="str">"frontend"</span>
+                  <span className="pnc">: [</span>
+                  <span className="str">"React"</span>
+                  <span className="pnc">,</span> <span className="str">"TypeScript"</span>
+                  <span className="pnc">,</span> <span className="str">"JavaScript"</span>
+                  <span className="pnc">,</span> <span className="str">"Next.js"</span>
+                  <span className="pnc">],</span>
+                </div>
+                <div>
+                  &nbsp;&nbsp;<span className="str">"data_and_infra"</span>
                   <span className="pnc">: [</span>
                   <span className="str">"PostgreSQL"</span>
-                  <span className="pnc">,</span> <span className="str">"ClickHouse"</span>
-                  <span className="pnc">,</span> <span className="str">"MongoDB"</span>
-                  <span className="pnc">,</span> <span className="str">"MySQL"</span>
-                  <span className="pnc">],</span>
-                </div>
-                <div>
-                  &nbsp;&nbsp;<span className="str">"devops"</span>
-                  <span className="pnc">: [</span>
-                  <span className="str">"Docker"</span>
-                  <span className="pnc">,</span> <span className="str">"GitLab CI"</span>
-                  <span className="pnc">,</span> <span className="str">"Nginx"</span>
-                  <span className="pnc">,</span> <span className="str">"Traefik"</span>
-                  <span className="pnc">,</span> <span className="str">"Linux"</span>
-                  <span className="pnc">],</span>
-                </div>
-                <div>
-                  &nbsp;&nbsp;<span className="str">"tools"</span>
-                  <span className="pnc">: [</span>
-                  <span className="str">"Git"</span>
-                  <span className="pnc">,</span> <span className="str">"Vite"</span>
-                  <span className="pnc">,</span> <span className="str">"Webpack"</span>
-                  <span className="pnc">,</span> <span className="str">"Figma"</span>
-                  <span className="pnc">,</span> <span className="str">"OpenAPI"</span>
-                  <span className="pnc">,</span> <span className="str">"Postman"</span>
+                  <span className="pnc">,</span> <span className="str">"RabbitMQ"</span>
+                  <span className="pnc">,</span> <span className="str">"Docker"</span>
+                  <span className="pnc">,</span> <span className="str">"CI/CD"</span>
                   <span className="pnc">]</span>
                 </div>
                 <div>
@@ -360,7 +373,7 @@ export default function PortfolioPage() {
               {techCategories.map((category) => (
                 <div className="tech-cat" key={category.title}>
                   <div className="tech-cat-hd">
-                    <span>{category.icon}</span> {category.title}
+                    <Icon icon={category.icon} size={13} /> {category.title}
                   </div>
                   <div className="tech-cat-body">
                     {category.pills.map((pill) => (
@@ -448,7 +461,7 @@ export default function PortfolioPage() {
             <div className="cards">
               {serviceCards.map((card) => (
                 <div className="card" key={card.title}>
-                  <div className="card-icon">{card.icon}</div>
+                  <div className="card-icon"><Icon icon={card.icon} size={20} /></div>
                   <div className="card-title">{card.title}</div>
                   <div className="card-desc">{card.desc}</div>
                 </div>
@@ -502,7 +515,7 @@ export default function PortfolioPage() {
                   target={contact.blank ? '_blank' : undefined}
                   rel={contact.blank ? 'noopener noreferrer' : undefined}
                 >
-                  <div className="contact-icon">{contact.icon}</div>
+                  <div className="contact-icon"><Icon icon={contact.icon} size={18} /></div>
                   <div>
                     <div className="contact-lbl">{contact.label}</div>
                     <div className="contact-val">{contact.value}</div>
@@ -549,7 +562,7 @@ export default function PortfolioPage() {
         <div className="sb-right">
           <span className="sb-i">UTF-8</span>
           <span className="sb-sep">│</span>
-          <span className="sb-i hl">Fullstack Developer</span>
+          <span className="sb-i hl">CTO / Head of Development</span>
           <span className="sb-sep">│</span>
           <span className="sb-i hl" id="sb-time">
             --:--:--

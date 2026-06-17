@@ -310,13 +310,12 @@ function useHeroTypewriter() {
     };
 
     const terminalWindow = document.createElement('div');
+    terminalWindow.className = 'hero-terminal';
     terminalWindow.style.cssText = `
-      margin-top: 32px;
       background: #0a0a0a;
       border: 1px solid #1f1f1f;
       border-radius: 8px;
       overflow: hidden;
-      max-width: 600px;
       font-size: 12.5px;
       box-shadow: 0 24px 60px rgba(0,0,0,.6);
     `;
@@ -335,11 +334,18 @@ function useHeroTypewriter() {
     `;
 
     const outputBody = document.createElement('div');
-    outputBody.style.cssText = 'padding: 16px; min-height: 160px; line-height: 1.75;';
+    outputBody.className = 'hero-terminal-body';
+    outputBody.style.cssText = 'padding: 16px; line-height: 1.75;';
 
     terminalWindow.appendChild(titleBar);
     terminalWindow.appendChild(outputBody);
     hero.appendChild(terminalWindow);
+
+    // keep the latest output in view as lines type out
+    const scrollObserver = new MutationObserver(() => {
+      outputBody.scrollTop = outputBody.scrollHeight;
+    });
+    scrollObserver.observe(outputBody, { childList: true, subtree: true, characterData: true });
 
     const createPrompt = () => {
       const row = document.createElement('div');
@@ -366,10 +372,10 @@ function useHeroTypewriter() {
         cmd: 'git log --oneline --graph -4',
         pause: 180,
         out: [
-          { text: '* a3f91c2  feat: highload analytics platform', hash: 'a3f91c2' },
+          { text: '* a3f91c2  feat: gov information system module', hash: 'a3f91c2' },
           { text: '* 8b2de17  feat: geo-information system v2', hash: '8b2de17' },
-          { text: '* c509a1f  refactor: monitoring service arch', hash: 'c509a1f' },
-          { text: '* f120e3d  fix: clickhouse query optimization', hash: 'f120e3d' },
+          { text: '* c509a1f  refactor: legacy platform migration', hash: 'c509a1f' },
+          { text: '* f120e3d  fix: postgresql query optimization', hash: 'f120e3d' },
         ],
       },
       {
@@ -395,10 +401,10 @@ function useHeroTypewriter() {
         out: [
           { text: 'Checking schedule...', cls: 'color:#555', pause: 400 },
           { text: '● status    ONLINE', cls: 'color:#00d26a;font-weight:600' },
-          { text: '● mode      Remote / Worldwide', cls: 'color:#3b9eff' },
+          { text: '● mode      Москва / Remote', cls: 'color:#3b9eff' },
           { text: '● response  < several hours', cls: 'color:#888' },
           { text: '', cls: '' },
-          { text: '  → Write me: mikhail@sivokon.dev', cls: 'color:#bf5af2' },
+          { text: '  → Write me: sivokonma@gmail.com', cls: 'color:#bf5af2' },
         ],
       },
     ];
@@ -576,6 +582,7 @@ function useHeroTypewriter() {
       activeIntervals.forEach((id) => window.clearInterval(id));
       activeIntervals.clear();
 
+      scrollObserver.disconnect();
       terminalWindow.remove();
     };
   }, []);
