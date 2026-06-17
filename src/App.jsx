@@ -1,9 +1,8 @@
-import Profile from './pages/Profile'
+import PortfolioPage from './components/PortfolioPage';
+import { usePortfolioEffects } from './hooks/usePortfolioEffects';
 
+export default function App() {
+  usePortfolioEffects();
 
-const App = () => {
-
-    return <Profile/>
+  return <PortfolioPage />;
 }
-
-export default App
