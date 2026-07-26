@@ -75,29 +75,14 @@ function useCustomCursor() {
 
     if (!dot || !ring) return undefined;
 
-    let mouseX = -200;
-    let mouseY = -200;
-    let ringX = -200;
-    let ringY = -200;
-
     const onMouseMove = (event) => {
-      mouseX = event.clientX;
-      mouseY = event.clientY;
-      dot.style.left = `${mouseX}px`;
-      dot.style.top = `${mouseY}px`;
-    };
-
-    let rafId = 0;
-    const tick = () => {
-      ringX += (mouseX - ringX) * 0.13;
-      ringY += (mouseY - ringY) * 0.13;
-      ring.style.left = `${ringX}px`;
-      ring.style.top = `${ringY}px`;
-      rafId = window.requestAnimationFrame(tick);
+      dot.style.left = `${event.clientX}px`;
+      dot.style.top = `${event.clientY}px`;
+      ring.style.left = `${event.clientX}px`;
+      ring.style.top = `${event.clientY}px`;
     };
 
     document.addEventListener('mousemove', onMouseMove);
-    rafId = window.requestAnimationFrame(tick);
 
     const hoverSelector =
       'a,button,.card,.project,.contact-card,.pill,.proc-step,.why-item,.sb-item,.tb-tab';
@@ -113,7 +98,6 @@ function useCustomCursor() {
 
     return () => {
       document.removeEventListener('mousemove', onMouseMove);
-      window.cancelAnimationFrame(rafId);
       hoverTargets.forEach((el) => {
         el.removeEventListener('mouseenter', onEnter);
         el.removeEventListener('mouseleave', onLeave);

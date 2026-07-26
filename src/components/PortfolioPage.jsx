@@ -18,8 +18,10 @@ import {
 
 function Icon({ icon: IconCmp, size = 14 }) {
   if (!IconCmp) return null;
-  return <IconCmp size={size} strokeWidth={1.75} style={{ display: 'block' }} />;
+  return <IconCmp size={size} strokeWidth={1.75} style={{ display: 'block' }} aria-hidden="true" />;
 }
+
+const NEW_TAB_HINT = <span className="sr-only"> (открывается в новой вкладке)</span>;
 
 function SectionHeader({ cmd, title, sub }) {
   return (
@@ -58,6 +60,7 @@ function ProjectTask({ task }) {
         {parts[0]}:{' '}
         <a href={task.href} target="_blank" rel="noopener noreferrer">
           {parts[1]}
+          {NEW_TAB_HINT}
         </a>
       </div>
     );
@@ -67,6 +70,7 @@ function ProjectTask({ task }) {
     <div className="proj-task">
       <a href={task.href} target="_blank" rel="noopener noreferrer">
         {task.text}
+        {NEW_TAB_HINT}
       </a>
     </div>
   );
@@ -75,7 +79,7 @@ function ProjectTask({ task }) {
 export default function PortfolioPage() {
   return (
     <>
-      <div id="boot">
+      <div id="boot" aria-hidden="true">
         <div className="boot-title">mikhail@sivokon:~/portfolio</div>
         <div className="boot-bar-wrap">
           <div className="boot-bar" id="boot-bar" />
@@ -85,9 +89,9 @@ export default function PortfolioPage() {
         </div>
       </div>
 
-      <div id="progress" />
-      <div id="cur-dot" />
-      <div id="cur-ring" />
+      <div id="progress" aria-hidden="true" />
+      <div id="cur-dot" aria-hidden="true" />
+      <div id="cur-ring" aria-hidden="true" />
 
       <div className="titlebar">
         <div className="tb-dots">
@@ -520,7 +524,8 @@ export default function PortfolioPage() {
                     <div className="contact-lbl">{contact.label}</div>
                     <div className="contact-val">{contact.value}</div>
                   </div>
-                  <div className="contact-arr">→</div>
+                  <div className="contact-arr" aria-hidden="true">→</div>
+                  {contact.blank ? NEW_TAB_HINT : null}
                 </a>
               ))}
             </div>
@@ -530,21 +535,22 @@ export default function PortfolioPage() {
                 <span className="iterm-hd-left">bash — interactive.sh</span>
                 <span className="iterm-hd-right">↵ Enter · попробуй: help, whoami, projects</span>
               </div>
-              <div id="iterm-out" className="iterm-out">
+              <div id="iterm-out" className="iterm-out" role="log" aria-live="polite" aria-label="Вывод терминала">
                 <div className="t-out t-ok">✓ Терминал инициализирован. Введи 'help' для списка команд.</div>
               </div>
               <div className="iterm-input-row">
-                <span className="t-user">mikhail</span>
-                <span className="t-at">@</span>
-                <span className="t-host">sivokon</span>
-                <span className="t-path"> ~/portfolio</span>
-                <span className="t-sym">$</span>
+                <span className="t-user" aria-hidden="true">mikhail</span>
+                <span className="t-at" aria-hidden="true">@</span>
+                <span className="t-host" aria-hidden="true">sivokon</span>
+                <span className="t-path" aria-hidden="true"> ~/portfolio</span>
+                <span className="t-sym" aria-hidden="true">$</span>
                 <input
                   id="iterm-input"
                   type="text"
                   autoComplete="off"
                   spellCheck={false}
                   placeholder="введи команду..."
+                  aria-label="Введите команду терминала"
                 />
               </div>
             </div>
