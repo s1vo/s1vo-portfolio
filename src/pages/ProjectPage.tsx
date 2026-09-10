@@ -23,7 +23,7 @@ export function ProjectPage() {
             <h1 className={s.title}>{project.title}</h1>
             <p className={s.lead}>{project.summary}</p>
             <ul className={s.tags} aria-label="Технологии">
-              {project.tags.map((t) => <li key={t} className="tag">{t}</li>)}
+              {project.stack.map((t) => <li key={t} className="tag">{t}</li>)}
             </ul>
           </div>
           <div className={s.imgBox}>

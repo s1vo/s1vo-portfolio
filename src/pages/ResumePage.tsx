@@ -44,7 +44,7 @@ export function ResumePage() {
                 <p className="eyebrow">{p.category}</p>
                 <h3 className={s.h3}><Link to={`/projects/${p.slug}`} className="text-link">{p.title}</Link></h3>
                 <p>{p.description}</p>
-                <p className={s.muted}>{p.tags.join(', ')}</p>
+                <p className={s.muted}>{p.stack.join(', ')}</p>
               </li>
             ))}
           </ul>

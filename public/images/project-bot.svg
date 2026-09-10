@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 215 190" width="215" height="190">
+<defs><filter id="b" x="-30%" y="-80%" width="160%" height="260%"><feGaussianBlur stdDeviation="5"/></filter></defs>
+<g transform="translate(107.5 95) scale(1.28) translate(-107.5 -95)">
+<ellipse cx="107.5" cy="176.0" rx="66.3" ry="9" fill="#8d8a82" opacity=".3" filter="url(#b)"/>
+<polygon points="97.2,66.0 159.0,101.7 97.2,137.4 35.4,101.7" fill="#4d4d49"/>
+<polygon points="35.4,140.3 97.2,176.0 97.2,137.4 35.4,101.7" fill="#353532"/>
+<polygon points="159.0,140.3 97.2,176.0 97.2,137.4 159.0,101.7" fill="#262624"/>
+<polygon points="97.2,39.3 135.8,61.6 97.2,83.9 58.6,61.6" fill="#f1eee8"/>
+<polygon points="58.6,100.2 97.2,122.5 97.2,83.9 58.6,61.6" fill="#dcd8d0"/>
+<polygon points="135.8,100.2 97.2,122.5 97.2,83.9 135.8,61.6" fill="#c6c2b9"/>
+<polygon points="156.4,118.0 179.6,131.4 156.4,144.8 133.2,131.4" fill="#f6673f"/>
+<polygon points="133.2,158.2 156.4,171.5 156.4,144.8 133.2,131.4" fill="#f45124"/>
+<polygon points="179.6,158.2 156.4,171.5 156.4,144.8 179.6,131.4" fill="#c93c18"/>
+<line x1="97.2" y1="61.6" x2="97.2" y2="28.9" stroke="#535752" stroke-width="1.0"/>
+<circle cx="97.2" cy="22.9" r="7.4" fill="#f45124"/>
+<circle cx="94.8" cy="20.5" r="2.4" fill="#f9967a"/>
+</g>
+</svg>

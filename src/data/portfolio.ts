@@ -11,6 +11,7 @@ export type Project = {
   image: Image;
   description: string;
   workAreas: string[];
+  stack: string[];
   role?: string;
   period?: string;
   results?: string[];
@@ -73,6 +74,7 @@ export const projects: Project[] = [
       'REST/SOAP-интеграции с внешними и государственными системами',
       'Оптимизация PostgreSQL и постепенное снижение технического долга',
     ],
+    stack: ['PHP', 'PostgreSQL', 'REST', 'SOAP', 'JavaScript', 'Docker'],
   },
   {
     id: 'modernization',
@@ -90,6 +92,7 @@ export const projects: Project[] = [
       'Разделение интерфейса, бизнес-логики и интеграционного слоя',
       'Настройка Docker-окружений и CI/CD',
     ],
+    stack: ['React', 'TypeScript', 'Laravel', 'PHP', 'PostgreSQL', 'Docker'],
   },
   {
     id: 'gis',
@@ -107,6 +110,43 @@ export const projects: Project[] = [
       'Пространственные данные и PostgreSQL/PostGIS',
       'Интеграция картографического модуля с внутренними API',
     ],
+    stack: ['React', 'Leaflet', 'OpenLayers', 'PostgreSQL', 'PostGIS', 'REST'],
+  },
+  {
+    id: 'portal',
+    slug: 'government-services-portal',
+    category: 'Государственные сервисы',
+    title: 'Портальные сервисы государственных услуг',
+    summary: 'Команда из 10 разработчиков',
+    tags: ['PHP', 'PostgreSQL', 'REST / SOAP'],
+    featured: false,
+    image: { src: '/images/project-portal.svg', width: 215, height: 190, alt: '' },
+    description:
+      'Разработка и сопровождение портальных сервисов с участием команды из 10 разработчиков.',
+    workAreas: [
+      'Техническое руководство командой и контроль реализации задач',
+      'Проектирование архитектуры модулей и структуры данных',
+      'Взаимодействие с аналитиками, QA, заказчиком и подрядчиками',
+    ],
+    stack: ['PHP', 'PostgreSQL', 'REST', 'SOAP', 'Git', 'Linux'],
+  },
+  {
+    id: 'bot',
+    slug: 'telegram-bot',
+    category: 'Боты',
+    title: 'Telegram-бот для оперативной работы',
+    summary: 'Данные, события, подписки и уведомления',
+    tags: ['Node.js', 'NestJS', 'Telegram Bot API'],
+    featured: false,
+    image: { src: '/images/project-bot.svg', width: 215, height: 190, alt: '' },
+    description:
+      'Бот для получения данных, навигации по событиям, подписок и уведомлений пользователей.',
+    workAreas: [
+      'Интеграция с внутренним API и обработка пользовательских сценариев',
+      'Фильтрация, пагинация, подписки и уведомления об изменениях',
+      'Подготовка к стабильной работе и сопровождению в production',
+    ],
+    stack: ['Node.js', 'NestJS', 'TypeScript', 'Telegram Bot API', 'PostgreSQL'],
   },
 ];
 
