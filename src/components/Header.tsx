@@ -6,6 +6,7 @@ import s from './Header.module.css';
 
 const links = [
   { to: '/#projects', label: 'Проекты' },
+  { to: '/#products', label: 'Продукты' },
   { to: '/#experience', label: 'Опыт' },
   { to: '/#stack', label: 'Стек' },
 ];

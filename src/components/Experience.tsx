@@ -6,7 +6,7 @@ export function Experience() {
   return (
     <section id="experience" className={`on-dark ${s.section}`} aria-labelledby="experience-title">
       <div className="container">
-        <p className="eyebrow eyebrow--on-dark">02 / Опыт и подход</p>
+        <p className="eyebrow eyebrow--on-dark">03 / Опыт и подход</p>
         <h2 id="experience-title" className={`h2 ${s.heading}`}>Понимаю код. Вижу систему целиком.</h2>
         <div className={s.cols}>
           <div>

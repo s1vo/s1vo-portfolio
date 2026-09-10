@@ -1,0 +1,87 @@
+<!doctype html><html lang="ru" style="--bg:#f6f4ef;--side:#ffffff;--panel:#ffffff;--panel2:#f1eee7;--line:#e4e0d6;--line2:#ebe8e0;--text:#1c1b18;--muted:#6b6960;--dim:#9c9a92;--accent:#1f8a5b;--code-bg:#f1eee7;--code-text:#2b2a26;--brand-r:50%;--font:'Inter'"><head><meta charset="utf-8"><title>Vault</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1e1f1c;--side:#181917;--panel:#262824;--panel2:#2e302c;--line:#3a3d38;--line2:#30322e;--text:#f1efe9;--muted:#9c9e96;--dim:#6f716a;--accent:#f45124;--on-accent:#fff;--code-bg:#151614;--code-text:#c9cbc3;--font:Manrope;--brand-r:7px;--green:#3ccb7f;--yellow:#e9b949;--red:#ff5f57;--blue:#5aa9ff;--purple:#b48cff}
+*{box-sizing:border-box}
+body{margin:0;width:1440px;height:900px;overflow:hidden;background:var(--bg);color:var(--text);font:13px/1.45 var(--font),system-ui,sans-serif;display:grid;grid-template-columns:224px 1fr;grid-template-rows:54px 1fr;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.side{grid-row:1/3;background:var(--side);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;padding:0 8px;margin-bottom:22px;letter-spacing:-.01em}
+.brand i{width:26px;height:26px;border-radius:var(--brand-r);background:var(--accent);display:inline-block;position:relative}
+.brand i::after{content:"";position:absolute;inset:8px;border-radius:2px;background:#fff;opacity:.9}
+.brand small{font-weight:600;color:var(--dim);font-size:11px;margin-left:auto}
+.nav a{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:7px;color:var(--muted);font-weight:600}
+.nav a.on{background:var(--panel2);color:var(--text)}
+.nav a b{width:14px;height:14px;border-radius:4px;border:1.5px solid currentColor;opacity:.7;display:inline-block}
+.nav a .n{margin-left:auto;font-size:11px;color:var(--dim)}
+.nav .sec{margin:18px 10px 6px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:700}
+.user{margin-top:auto;display:flex;gap:10px;align-items:center;padding:10px;border-top:1px solid var(--line);color:var(--muted);font-weight:600}
+.user i{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#f45124,#b48cff);display:inline-block}
+.top{display:flex;align-items:center;gap:14px;padding:0 24px;border-bottom:1px solid var(--line)}
+.top h1{font-size:15px;margin:0;font-weight:700}
+.crumb{color:var(--dim);font-weight:600}.crumb b{color:var(--muted);font-weight:600}
+.top .sp{flex:1}
+.search{width:260px;padding:7px 12px;border-radius:7px;background:var(--panel);border:1px solid var(--line);color:var(--dim);font-weight:500}
+.main{padding:20px 24px;overflow:hidden;min-width:0;display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:14px;align-items:center}
+.grid{display:grid;gap:14px}.grid>*,.row>*{min-width:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.card h3{margin:0 0 12px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:8px}
+.card h3 .sp{flex:1}
+.kpi{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.kpi small{font-size:12px;color:var(--muted);font-weight:600;margin-left:6px;letter-spacing:0}
+.sub{color:var(--muted);font-size:12px;margin-top:6px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.bar i.g{background:var(--green)}.bar i.y{background:var(--yellow)}.bar i.r{background:var(--red)}.bar i.b{background:var(--blue)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;font-size:11px;color:var(--dim);font-weight:700;padding:6px 10px;border-bottom:1px solid var(--line);letter-spacing:.04em}
+td{padding:9px 10px;border-bottom:1px solid var(--line2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+tr:last-child td{border-bottom:0}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:1px;background:var(--muted)}
+.dot.g{background:var(--green)}.dot.y{background:var(--yellow)}.dot.r{background:var(--red)}.dot.b{background:var(--blue)}.dot.a{background:var(--accent)}
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;background:var(--panel2);border:1px solid var(--line);font-size:11px;color:var(--muted);font-weight:600;margin-right:4px}
+.tag.g{color:var(--green);border-color:#2f5a44}.tag.r{color:var(--red);border-color:#5c3634}.tag.y{color:var(--yellow);border-color:#5c5030}.tag.a{color:var(--accent);border-color:#6b3020}.tag.b{color:var(--blue);border-color:#2f4a6b}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:7px;background:var(--panel2);border:1px solid var(--line);font-weight:700;font-size:12px;white-space:nowrap}
+.btn.p{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.ghost{background:transparent}
+.log{font:12px/1.65 "JetBrains Mono",ui-monospace,Menlo,monospace;background:var(--code-bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--code-text);white-space:pre;overflow:hidden;flex:1}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:12px}
+.g{color:var(--green)}.y{color:var(--yellow)}.r{color:var(--red)}.b{color:var(--blue)}.a{color:var(--accent)}.p{color:var(--purple)}.m{color:var(--muted)}.d{color:var(--dim)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.tabs span{padding:6px 12px;color:var(--muted);font-weight:600;font-size:12px}
+.tabs span.on{color:var(--text);border-bottom:2px solid var(--accent);margin-bottom:-1px}
+.list{display:flex;flex-direction:column}
+.list > div{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line2)}
+.list > div:last-child{border-bottom:0}
+.list .sp{flex:1}
+.fill{flex:1;min-height:0}
+svg.spark{display:block}
+.kbd{font:11px "JetBrains Mono",monospace;background:var(--code-bg);border:1px solid var(--line);border-radius:4px;padding:1px 5px;color:var(--muted)}
+.tree div{padding:5px 8px;color:var(--muted);font-weight:600;border-radius:6px}
+.tree div.on{background:var(--panel2);color:var(--text)}
+.tree .i1{padding-left:24px}.tree .i2{padding-left:40px}
+.av{display:inline-block;width:22px;height:22px;border-radius:50%;vertical-align:middle;margin-left:-6px;border:2px solid var(--panel)}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0;font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.field span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:8px 10px;border-radius:7px;background:var(--code-bg);border:1px solid var(--line);color:var(--text);font-weight:500;font-size:13px;letter-spacing:0;text-transform:none}
+body.top-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:56px 1fr}
+body.top-layout .top{background:var(--side);gap:22px}
+body.top-layout .brand{margin:0;padding:0;margin-right:10px}
+.hnav{display:flex;gap:4px}.hnav a{white-space:nowrap;padding:7px 12px;border-radius:7px;color:var(--muted);font-weight:600}.hnav a.on{color:var(--text);background:var(--panel2)}
+.pagehead{display:flex;align-items:center;gap:12px}.pagehead h1{font-size:20px;margin:0;font-weight:800;letter-spacing:-.01em}
+</style>
+</head><body class="side-layout">
+<aside class="side"><div class="brand"><i></i>Vault<small>passwords</small></div><nav class="nav"><div class="sec">Хранилище</div><a class="on"><b></b>Все записи<span class=n>128</span></a><a class=""><b></b>Избранное<span class=n>9</span></a><a class=""><b></b>Общие<span class=n>27</span></a><a class=""><b></b>Корзина</a><div class="sec">Инструменты</div><a class=""><b></b>Генератор</a><a class=""><b></b>Аудит безопасности<span class=n>3</span></a><a class=""><b></b>Импорт / экспорт</a><a class=""><b></b>Настройки</a></nav><div class="user"><i></i>Михаил С.<span class="n" style="margin-left:auto;color:var(--dim)">Owner</span></div></aside><header class="top"><span class="crumb">Хранилище <b>/</b></span><h1>Все записи</h1><span class="sp"></span><span class="search">Поиск · ⌘K</span><span class="btn">Заблокировать</span><span class="btn p">+ Запись</span></header>
+<main class="main">
+<div class="grid fill" style="grid-template-columns:200px 1fr 1.1fr">
+ <div class="card"><h3>Папки</h3><div class="tree"><div class="on">Все записи <span class="d" style="float:right">128</span></div><div>Работа <span class="d" style="float:right">61</span></div><div class="i1">Инфраструктура</div><div class="i1">Сервисы</div><div>Личное <span class="d" style="float:right">40</span></div><div>Общие <span class="d" style="float:right">27</span></div></div><h3 style="margin-top:18px">Теги</h3><div><span class="tag">infra</span><span class="tag">dev</span><span class="tag">db</span><span class="tag">bots</span><span class="tag">finance</span><span class="tag">office</span></div>
+ <h3 style="margin-top:18px">Безопасность</h3><div class="list"><div><span class="dot r"></span>Слабые<span class="sp"></span><span class="mono">3</span></div><div><span class="dot y"></span>Повторяются<span class="sp"></span><span class="mono">5</span></div><div><span class="dot g"></span>Без 2FA<span class="sp"></span><span class="mono">12</span></div></div></div>
+ <div class="card"><h3>Записи<span class="sp"></span><span class="tag">по дате</span></h3><div class="list"><div class="" style=""><span class="dot g"></span><div><b>GitHub</b><div class="m" style="font-size:11.5px">s1vo</div></div><span class="sp"></span><span class=tag>work</span><span class=tag>dev</span></div><div class="" style=""><span class="dot y"></span><div><b>AWS Root</b><div class="m" style="font-size:11.5px">admin@company.io</div></div><span class="sp"></span><span class=tag>infra</span></div><div class="on" style="background:var(--panel2);border-radius:8px;padding:9px 10px;margin:0 -10px"><span class="dot g"></span><div><b>PostgreSQL prod</b><div class="m" style="font-size:11.5px">nexus_admin</div></div><span class="sp"></span><span class=tag>infra</span><span class=tag>db</span></div><div class="" style=""><span class="dot g"></span><div><b>Cloudflare</b><div class="m" style="font-size:11.5px">ops@company.io</div></div><span class="sp"></span><span class=tag>infra</span><span class=tag>dns</span></div><div class="" style=""><span class="dot g"></span><div><b>Telegram Bot Token</b><div class="m" style="font-size:11.5px">@nexus_ops_bot</div></div><span class="sp"></span><span class=tag>bots</span></div><div class="" style=""><span class="dot r"></span><div><b>Figma</b><div class="m" style="font-size:11.5px">sivokonma@…</div></div><span class="sp"></span><span class=tag>design</span></div><div class="" style=""><span class="dot g"></span><div><b>Stripe</b><div class="m" style="font-size:11.5px">finance@company.io</div></div><span class="sp"></span><span class=tag>finance</span></div><div class="" style=""><span class="dot g"></span><div><b>VPN Office</b><div class="m" style="font-size:11.5px">msivokon</div></div><span class="sp"></span><span class=tag>office</span></div></div></div>
+ <div class="card" style="display:flex;flex-direction:column;gap:14px"><div class="row"><div><div class="kpi" style="font-size:22px">PostgreSQL prod</div><div class="sub">Работа / Инфраструктура · <span class="tag">infra</span><span class="tag">db</span></div></div><span class="sp"></span><span class="btn ghost">Поделиться</span><span class="btn p">Копировать</span></div>
+  <div class="grid" style="grid-template-columns:1fr 1fr"><label class="field">Логин<span class="mono">nexus_admin</span></label><label class="field">Хост<span class="mono">db.internal:5432</span></label></div>
+  <label class="field">Пароль<span class="mono">••••••••••••••••••••••••</span></label>
+  <div class="row"><div class="sub" style="margin:0">Надёжность</div><div class="bar" style="flex:1;margin:0"><i class="g" style="width:92%"></i></div><span class="g" style="font-weight:700">Отличная · 128 бит</span></div>
+  <div class="card" style="background:var(--panel2)"><h3>Генератор пароля<span class="sp"></span><span class="btn ghost" style="background:var(--panel)">Обновить</span></h3><div class="mono" style="font-size:15px;letter-spacing:.04em;margin-bottom:10px">Kq7#vR2p!mX9zL4wB&amp;nT8sD</div><div class="row" style="gap:8px"><span class="tag">24 символа</span><span class="tag g">A–Z</span><span class="tag g">a–z</span><span class="tag g">0–9</span><span class="tag g">#!&amp;</span></div></div>
+  <div class="row"><span class="tag g">2FA включён · TOTP</span><span class="mono" style="font-size:18px;letter-spacing:.2em">482 913</span><span class="d">обновится через 18 с</span></div>
+  <div><h3>История</h3><div class="list"><div><span class="d" style="width:120px">Сегодня 12:40</span><span>Пароль изменён</span><span class="sp"></span><span class="m">вы</span></div><div><span class="d" style="width:120px">3 дня назад</span><span>Просмотр</span><span class="sp"></span><span class="m">вы · MacBook</span></div><div><span class="d" style="width:120px">2 нед. назад</span><span>Добавлен тег db</span><span class="sp"></span><span class="m">вы</span></div><div><span class="d" style="width:120px">1 мес. назад</span><span>Создано</span><span class="sp"></span><span class="m">вы</span></div></div></div>
+  <div class="d" style="font-size:11.5px">Зашифровано AES-256-GCM на клиенте · ключ не покидает устройство</div></div>
+</div></main></body></html>

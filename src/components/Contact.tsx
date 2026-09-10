@@ -7,7 +7,7 @@ export function Contact() {
     <section id="contacts" className={`container ${s.section}`} aria-labelledby="contacts-title">
       <div className={s.row}>
         <div>
-          <p className="eyebrow">03 / Контакты</p>
+          <p className="eyebrow">04 / Контакты</p>
           <h2 id="contacts-title" className={`h2 ${s.heading}`}>Обсудим вашу задачу?</h2>
         </div>
         <div className={s.actions}>

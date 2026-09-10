@@ -19,6 +19,7 @@ npm run typecheck
 | --- | --- |
 | `/` | Главная |
 | `/projects/:slug` | Кейс (`infrastructure-platform`, `corporate-platform-modernization`, `geoinformation-platform`, `government-services-portal`, `telegram-bot`) |
+| `/products/:slug` | Собственный продукт (`nexus`, `forge`, `vault`, `pulse`, `flow`, `mesh`, `drop`, `relay`, `querylab`, `workspace`) |
 | `/resume` | Резюме, кнопка «Печать / PDF» вызывает системную печать |
 | любой другой | 404 |
 
@@ -29,7 +30,19 @@ npm run typecheck
 - Тексты, проекты, контакты, стек: `src/data/portfolio.ts`. PDF резюме: поле `resumePdfUrl` (сейчас `null`, кнопка «Резюме» ведёт на `/resume`).
 - Цвета, шрифты, размеры: `src/styles/tokens.css`. Базовые стили и кнопки: `src/styles/global.css`. Печать: `src/styles/print.css`.
 - Иллюстрации: `public/images/*.png`, размеры прописаны в `src/data/portfolio.ts`.
+- Продукты: массив `products` в `src/data/portfolio.ts`, скриншоты в `public/images/products/*.webp` (1440×900).
 
 ## Иллюстрации
 
 Четыре изображения вырезаны из растрового макета 1024 px (hero 520×372, кейсы 625×205 / 190×190 / 215×190). Это временные ресурсы низкого разрешения: на экранах 1440+ и retina они мягче, чем нужно. Иллюстрации портальных сервисов и Telegram-бота (`project-portal.svg`, `project-bot.svg`) сгенерированы как изометрические композиции в той же палитре и тоже подлежат замене. Для финала нужны отдельные исходники: hero ≈1600×1400, инфраструктура ≈1800×800, остальные ≈900×800, формат WebP.
+
+## Скриншоты продуктов
+
+Экраны десяти продуктов свёрстаны как статические HTML-макеты в `tools/mockups/build.py` (у каждого своя палитра, шрифт и раскладка) и сняты в Chrome на 1440×900:
+
+```bash
+python3 tools/mockups/build.py   # генерирует tools/mockups/out/*.html
+# открыть out/<name>.html в Chrome на 1440×900 и сохранить как public/images/products/<name>.webp
+```
+
+Это макеты интерфейсов, а не снимки работающих систем. Когда появится реальный продукт, замените webp на настоящий скриншот и уберите статус «В разработке» в данных.

@@ -1,4 +1,4 @@
-.section { padding-top: clamp(36px, 4.4vw, 56px); padding-bottom: clamp(20px, 2.4vw, 32px); }
+.section { padding-top: clamp(36px, 4.4vw, 56px); padding-bottom: clamp(12px, 1.6vw, 20px); }
 .heading { margin-top: var(--space-3); margin-bottom: clamp(20px, 2.4vw, 32px); }
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3); }
 .card { display: grid; border-radius: var(--radius-panel); transition: border-color var(--duration-fast) var(--ease-ui), background-color var(--duration-fast) var(--ease-ui); }
