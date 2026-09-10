@@ -6,7 +6,7 @@
 .tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-6); }
 .imgBox { width: 100%; border-radius: var(--radius-panel); }
 .img { width: 100%; height: auto; }
-.blocks { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); margin-top: clamp(36px, 4vw, 56px); max-width: 1000px; }
+.blocks { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); margin-top: clamp(36px, 4vw, 56px); }
 .block p { max-width: 60ch; }
 .h2 { font-size: 22px; letter-spacing: -0.015em; margin-bottom: var(--space-3); }
 .list li { position: relative; padding: 10px 0 10px 20px; border-top: 1px solid var(--color-line); }
