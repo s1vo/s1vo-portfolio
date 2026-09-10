@@ -21,7 +21,10 @@ export function ProductPage() {
         <header className={p.head}>
           <div>
             <p className="eyebrow">Собственный продукт · {product.status}</p>
-            <h1 className={s.title}>{product.name}</h1>
+            <div className={p.titleRow}>
+              <img src={product.logo} width={56} height={56} alt="" className={p.logo} />
+              <h1 className={s.title}>{product.name}</h1>
+            </div>
             <p className={s.lead}>{product.tagline}</p>
           </div>
           <ul className={p.stack} aria-label="Стек">
@@ -59,7 +62,7 @@ export function ProductPage() {
               <li key={x.id}>
                 <Link to={`/products/${x.slug}`} className={s.otherLink}>
                   <span className="eyebrow">{x.tagline}</span>
-                  <span className={s.otherTitle}>{x.name} <ArrowRight size={18} /></span>
+                  <span className={s.otherTitle}><img src={x.logo} width={22} height={22} alt="" className={p.miniLogo} />{x.name} <ArrowRight size={18} /></span>
                 </Link>
               </li>
             ))}

@@ -10,12 +10,11 @@ body{margin:0;width:1440px;height:900px;overflow:hidden;background:var(--bg);col
 a{color:inherit;text-decoration:none}
 .side{grid-row:1/3;background:var(--side);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;padding:0 8px;margin-bottom:22px;letter-spacing:-.01em}
-.brand i{width:26px;height:26px;border-radius:var(--brand-r);background:var(--accent);display:inline-block;position:relative}
-.brand i::after{content:"";position:absolute;inset:8px;border-radius:2px;background:#fff;opacity:.9}
+.brand i{width:28px;height:28px;border-radius:var(--brand-r);background:var(--accent);display:inline-flex;align-items:center;justify-content:center;color:var(--on-accent);flex:none}
 .brand small{font-weight:600;color:var(--dim);font-size:11px;margin-left:auto}
 .nav a{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:7px;color:var(--muted);font-weight:600}
 .nav a.on{background:var(--panel2);color:var(--text)}
-.nav a b{width:14px;height:14px;border-radius:4px;border:1.5px solid currentColor;opacity:.7;display:inline-block}
+.nav a .ic{opacity:.8;flex:none}.nav a.on .ic{opacity:1;color:var(--accent)}
 .nav a .n{margin-left:auto;font-size:11px;color:var(--dim)}
 .nav .sec{margin:18px 10px 6px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:700}
 .user{margin-top:auto;display:flex;gap:10px;align-items:center;padding:10px;border-top:1px solid var(--line);color:var(--muted);font-weight:600}
@@ -74,6 +73,67 @@ body.top-layout .brand{margin:0;padding:0;margin-right:10px}
 </style>
 """
 
+
+ICONS = {
+ 'grid':'<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+ 'server':'<rect x="2" y="3" width="20" height="6" rx="1.5"/><rect x="2" y="15" width="20" height="6" rx="1.5"/><path d="M6 6h.01M6 18h.01"/>',
+ 'box':'<path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="M3 8l9 5 9-5M12 13v8"/>',
+ 'file':'<path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h8"/>',
+ 'bell':'<path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/>',
+ 'plug':'<path d="M12 22v-5M9 8V2M15 8V2M6 8h12v4a6 6 0 0 1-12 0z"/>',
+ 'users':'<path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>',
+ 'sliders':'<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>',
+ 'folder':'<path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>',
+ 'branch':'<circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M6 3v12M18 9a9 9 0 0 1-9 9"/>',
+ 'layers':'<path d="M12 2 2 7l10 5 10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/>',
+ 'image':'<rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/>',
+ 'cpu':'<rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/>',
+ 'key':'<circle cx="7.5" cy="15.5" r="5.5"/><path d="m21 2-9.6 9.6M15.5 7.5l3 3L22 6l-3-3"/>',
+ 'star':'<path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01z"/>',
+ 'share':'<circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/>',
+ 'trash':'<path d="M3 6h18M8 6V4h8v2M19 6l-1 14H6L5 6"/>',
+ 'wand':'<path d="M15 4V2M15 16v-2M8 9h2M20 9h2M17.8 11.8 19 13M15 9h.01M17.8 6.2 19 5M3 21l9-9M12.2 6.2 11 5"/>',
+ 'shield':'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>',
+ 'upload':'<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>',
+ 'activity':'<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',
+ 'alert':'<path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0zM12 9v4M12 17h.01"/>',
+ 'globe':'<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>',
+ 'pin':'<path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>',
+ 'clock':'<circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>',
+ 'cloud':'<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>',
+ 'code':'<path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/>',
+ 'database':'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>',
+ 'table':'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/>',
+ 'list':'<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
+ 'inbox':'<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>',
+ 'link':'<path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>',
+ 'lock':'<rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>',
+ 'check':'<path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><path d="m22 4-10 10-3-3"/>',
+ 'terminal':'<path d="m4 17 6-6-6-6M12 19h8"/>',
+ 'hammer':'<path d="m14 4 6 6-3 3-6-6zM3 21l8-8"/>',
+ 'send':'<path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/>',
+ 'drop':'<path d="M12 2.7 6.3 8.4a8 8 0 1 0 11.4 0z"/>',
+ 'repeat':'<path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>',
+ 'network':'<rect x="9" y="2" width="6" height="6" rx="1"/><rect x="2" y="16" width="6" height="6" rx="1"/><rect x="16" y="16" width="6" height="6" rx="1"/><path d="M12 8v4M12 12 5 16M12 12l7 4"/>',
+ 'hub':'<circle cx="12" cy="12" r="3"/><circle cx="4" cy="6" r="2"/><circle cx="20" cy="6" r="2"/><circle cx="4" cy="18" r="2"/><circle cx="20" cy="18" r="2"/><path d="M6 7l4 3M18 7l-4 3M6 17l4-3M18 17l-4-3"/>',
+ 'layout':'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>',
+ 'rocket':'<path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>',
+ 'dot':'<circle cx="12" cy="12" r="3"/>',
+}
+def ico(name, size=15, cls='', stroke='currentColor', sw=1.8):
+    return f'<svg class="ic {cls}" width="{size}" height="{size}" viewBox="0 0 24 24" fill="none" stroke="{stroke}" stroke-width="{sw}" stroke-linecap="round" stroke-linejoin="round">{ICONS[name]}</svg>'
+NAV_ICON = [('Dashboard','grid'),('Обзор','grid'),('Серверы','server'),('Контейнеры','box'),('Логи','file'),('Алерты','bell'),('Интеграции','plug'),('Команда','users'),('Участники','users'),('Настройки','sliders'),
+ ('Сборки','hammer'),('Реестр','image'),('Воркеры','cpu'),('Все записи','key'),('Избранное','star'),('Общие','share'),('Корзина','trash'),('Генератор','wand'),('Аудит','shield'),('Импорт','upload'),
+ ('Мониторы','activity'),('Инциденты','alert'),('Статус','globe'),('Уведомления','bell'),('Регионы','pin'),('API-ключи','key'),('Коллекции','folder'),('Окружения','sliders'),('История','clock'),('Mock','cloud'),
+ ('OpenAPI','code'),('WSDL','code'),('Шаблоны','layers'),('Компоненты','box'),('Документ','file'),('Мои файлы','folder'),('Недавние','clock'),('Ссылки','link'),('Загрузки','upload'),('Pipelines','branch'),
+ ('События','activity'),('DLQ','alert'),('Очереди','layers'),('Секреты','lock'),('SQL','terminal'),('Таблицы','table'),('Схема','share'),('Медленные','clock'),('Индексы','list'),('Активность','activity'),
+ ('Мои задачи','check'),('Входящие','inbox'),('Проекты','folder'),('nexus-','box'),('pulse-','box'),('relay-','box'),('Nexus platform','folder'),('ГИС','folder'),('Корпоративная','folder')]
+def nav_icon(label):
+    for k,v in NAV_ICON:
+        if k.lower() in label.lower(): return v
+    return 'dot'
+LOGO = {'nexus':'hub','forge':'rocket','vault':'shield','pulse':'activity','flow':'send','mesh':'network','drop':'drop','relay':'repeat','querylab':'database','workspace':'layout'}
+
 def spark(vals, w=180, h=36, color='var(--accent)', fill=True):
     mx, mn = max(vals), min(vals)
     pts = [(i * w / (len(vals) - 1), h - 4 - (v - mn) / (mx - mn or 1) * (h - 8)) for i, v in enumerate(vals)]
@@ -114,15 +174,15 @@ def shell(name, tagline, nav, title, crumb, body, right_top=''):
         else:
             label, on, n = (item + (False, ''))[:3] if len(item) < 3 else item
             if layout == 'side':
-                navh += f'<a class="{"on" if on else ""}"><b></b>{label}{f"<span class=n>{n}</span>" if n else ""}</a>'
+                navh += f'<a class="{"on" if on else ""}">{ico(nav_icon(label))}{label}{f"<span class=n>{n}</span>" if n else ""}</a>'
             else:
                 navh += f'<a class="{"on" if on else ""}">{label}</a>'
     style = theme_style(t)
     if layout == 'side':
-        chrome = f'<aside class="side"><div class="brand"><i></i>{name}<small>{tagline}</small></div><nav class="nav">{navh}</nav><div class="user"><i></i>Михаил С.<span class="n" style="margin-left:auto;color:var(--dim)">Owner</span></div></aside><header class="top"><span class="crumb">{crumb}</span><h1>{title}</h1><span class="sp"></span>{right_top}</header>'
+        chrome = f'<aside class="side"><div class="brand"><i>{ico(LOGO[key],16,"",  "currentColor", 2.2)}</i>{name}<small>{tagline}</small></div><nav class="nav">{navh}</nav><div class="user"><i></i>Михаил С.<span class="n" style="margin-left:auto;color:var(--dim)">Owner</span></div></aside><header class="top"><span class="crumb">{crumb}</span><h1>{title}</h1><span class="sp"></span>{right_top}</header>'
         head = ''
     else:
-        chrome = f'<header class="top"><div class="brand"><i></i>{name}<small>{tagline}</small></div><nav class="hnav">{navh}</nav><span class="sp"></span>{right_top}<span class="user" style="border:0;padding:0 0 0 10px;margin:0"><i></i></span></header>'
+        chrome = f'<header class="top"><div class="brand"><i>{ico(LOGO[key],16,"",  "currentColor", 2.2)}</i>{name}<small>{tagline}</small></div><nav class="hnav">{navh}</nav><span class="sp"></span>{right_top}<span class="user" style="border:0;padding:0 0 0 10px;margin:0"><i></i></span></header>'
         head = f'<div class="pagehead"><span class="crumb">{crumb}</span><h1>{title}</h1></div>'
     return f'''<!doctype html><html lang="ru" style="{style}"><head><meta charset="utf-8"><title>{name}</title>{CSS}</head><body class="{layout}-layout">
 {chrome}
@@ -375,4 +435,9 @@ body = f'''
  <div class="card fill"><h3>Роли проекта</h3><div class="list" style="font-size:12px"><div><i class="av" style="background:#f45124;margin:0"></i>Михаил С.<span class="sp"></span><span class="tag a">owner</span></div><div><i class="av" style="background:#3ccb7f;margin:0"></i>Илья В.<span class="sp"></span><span class="tag">admin</span></div><div><i class="av" style="background:#5aa9ff;margin:0"></i>Анна К.<span class="sp"></span><span class="tag">member</span></div><div><i class="av" style="background:#b48cff;margin:0"></i>Дарья М.<span class="sp"></span><span class="tag">member</span></div><div><i class="av" style="background:#e9b949;margin:0"></i>Заказчик<span class="sp"></span><span class="tag">viewer</span></div></div></div></div>
 </div>'''
 write('workspace', shell('Workspace','team',[('Проекты',True),('Мои задачи',False,'6'),('Документы',),('Входящие',False,'3'),('Участники',),('Настройки',)],'Доска','Nexus platform <b>/</b>',body,'<span class="search">Поиск задач, документов…</span>'))
+LOGO_DIR = os.path.join(os.path.dirname(__file__), '..', '..', 'public', 'images', 'products')
+for key, glyph in LOGO.items():
+    t = THEMES[key]; acc = t.get('accent', '#f45124'); on = t.get('onacc', '#ffffff'); r = t.get('br', '7px')
+    rx = 32 if r == '50%' else int(r.replace('px','')) * 64 // 28
+    open(os.path.join(LOGO_DIR, f'logo-{key}.svg'), 'w').write(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64"><rect width="64" height="64" rx="{rx}" fill="{acc}"/><g transform="translate(14 14)">{ico(glyph, 36, "", on, 2.2)}</g></svg>')
 print('ok', len(os.listdir(OUT)))

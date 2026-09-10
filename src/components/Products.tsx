@@ -24,6 +24,7 @@ export function Products() {
               />
               <div className={s.body}>
                 <div className={s.titleRow}>
+                  <img src={p.logo} width={28} height={28} alt="" className={s.logo} />
                   <h3 className={s.name}>{p.name}</h3>
                   <span className={s.tagline}>{p.tagline}</span>
                   <span className={`arrow-circle ${s.arrow}`} aria-hidden="true"><ArrowRight size={16} /></span>

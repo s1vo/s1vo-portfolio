@@ -163,9 +163,11 @@ export type Product = {
   demonstrates: string[];
   status: string;
   screenshot: Image;
+  logo: string;
 };
 
 const shot = (id: string, name: string): Image => ({ src: `/images/products/${id}.webp`, width: 1440, height: 900, alt: `Интерфейс ${name}` });
+const logo = (id: string) => `/images/products/logo-${id}.svg`;
 
 export const products: Product[] = [
   {
@@ -175,6 +177,7 @@ export const products: Product[] = [
     stack: ['React', 'Next.js', 'NestJS', 'PostgreSQL', 'RabbitMQ', 'Docker', 'Nginx'],
     demonstrates: ['System Design', 'Realtime', 'DevOps', 'Backend'],
     screenshot: shot('nexus', 'Nexus'),
+    logo: logo('nexus'),
   },
   {
     id: 'forge', slug: 'forge', name: 'Forge', tagline: 'Self-hosted Deployment Platform', status: 'В разработке',
@@ -183,6 +186,7 @@ export const products: Product[] = [
     stack: ['React', 'NestJS', 'Docker', 'GitLab / GitHub', 'Nginx', 'RabbitMQ'],
     demonstrates: ['CI/CD', 'Docker', 'Очереди', 'Архитектура'],
     screenshot: shot('forge', 'Forge'),
+    logo: logo('forge'),
   },
   {
     id: 'vault', slug: 'vault', name: 'Vault', tagline: 'Password Manager', status: 'В разработке',
@@ -191,6 +195,7 @@ export const products: Product[] = [
     stack: ['Next.js', 'NestJS', 'PostgreSQL', 'Docker'],
     demonstrates: ['Security', 'Полноценный Fullstack'],
     screenshot: shot('vault', 'Vault'),
+    logo: logo('vault'),
   },
   {
     id: 'pulse', slug: 'pulse', name: 'Pulse', tagline: 'Monitoring Platform', status: 'В разработке',
@@ -199,6 +204,7 @@ export const products: Product[] = [
     stack: ['React', 'NestJS', 'PostgreSQL', 'RabbitMQ'],
     demonstrates: ['Background jobs', 'Аналитика', 'API'],
     screenshot: shot('pulse', 'Pulse'),
+    logo: logo('pulse'),
   },
   {
     id: 'flow', slug: 'flow', name: 'Flow', tagline: 'API Development Studio', status: 'В разработке',
@@ -207,6 +213,7 @@ export const products: Product[] = [
     stack: ['React', 'TypeScript', 'Node.js', 'OpenAPI'],
     demonstrates: ['Developer Tools', 'REST / SOAP'],
     screenshot: shot('flow', 'Flow'),
+    logo: logo('flow'),
   },
   {
     id: 'mesh', slug: 'mesh', name: 'Mesh', tagline: 'Architecture Designer', status: 'В разработке',
@@ -215,6 +222,7 @@ export const products: Product[] = [
     stack: ['React', 'TypeScript', 'NestJS', 'PostgreSQL'],
     demonstrates: ['System Design', 'Frontend-архитектура'],
     screenshot: shot('mesh', 'Mesh'),
+    logo: logo('mesh'),
   },
   {
     id: 'drop', slug: 'drop', name: 'Drop', tagline: 'Private Cloud Storage', status: 'В разработке',
@@ -223,6 +231,7 @@ export const products: Product[] = [
     stack: ['Next.js', 'NestJS', 'PostgreSQL', 'S3', 'Docker'],
     demonstrates: ['Storage', 'Permissions', 'Backend-архитектура'],
     screenshot: shot('drop', 'Drop'),
+    logo: logo('drop'),
   },
   {
     id: 'relay', slug: 'relay', name: 'Relay', tagline: 'Integration Hub', status: 'В разработке',
@@ -231,6 +240,7 @@ export const products: Product[] = [
     stack: ['React', 'NestJS', 'RabbitMQ', 'PostgreSQL'],
     demonstrates: ['Интеграции', 'RabbitMQ', 'Reliability'],
     screenshot: shot('relay', 'Relay'),
+    logo: logo('relay'),
   },
   {
     id: 'querylab', slug: 'querylab', name: 'QueryLab', tagline: 'Database Explorer', status: 'В разработке',
@@ -239,6 +249,7 @@ export const products: Product[] = [
     stack: ['React', 'NestJS', 'PostgreSQL'],
     demonstrates: ['Базы данных', 'Performance', 'Developer Tooling'],
     screenshot: shot('querylab', 'QueryLab'),
+    logo: logo('querylab'),
   },
   {
     id: 'workspace', slug: 'workspace', name: 'Workspace', tagline: 'Team Platform', status: 'В разработке',
@@ -247,6 +258,7 @@ export const products: Product[] = [
     stack: ['Next.js', 'NestJS', 'PostgreSQL', 'RabbitMQ'],
     demonstrates: ['RBAC', 'Сложная бизнес-логика'],
     screenshot: shot('workspace', 'Workspace'),
+    logo: logo('workspace'),
   },
 ];
 
