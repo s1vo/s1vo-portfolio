@@ -1,0 +1,11 @@
+@media print {
+  @page { margin: 16mm; }
+  body { background: #fff; color: #000; font-size: 11pt; line-height: 1.4; }
+  .no-print { display: none !important; }
+  .container { max-width: none; padding-inline: 0; }
+  a { color: inherit; }
+  a[href^='http']::after { content: ' (' attr(href) ')'; font-size: 0.85em; color: #444; }
+  h1, h2, h3 { break-after: avoid; }
+  section, li { break-inside: avoid; }
+  .print-page-break { break-before: page; }
+}

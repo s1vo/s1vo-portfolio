@@ -1,0 +1,84 @@
+<!doctype html><html lang="ru" style="--bg:#17131f;--side:#120f19;--panel:#1f1a29;--panel2:#282234;--line:#372f47;--line2:#2c2539;--text:#f0ecf7;--muted:#a094b5;--dim:#6e6482;--accent:#ff4f9a;--code-bg:#120f19;--code-text:#d2c9e2;--brand-r:50%;--font:'Space Grotesk'"><head><meta charset="utf-8"><title>Relay</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1e1f1c;--side:#181917;--panel:#262824;--panel2:#2e302c;--line:#3a3d38;--line2:#30322e;--text:#f1efe9;--muted:#9c9e96;--dim:#6f716a;--accent:#f45124;--on-accent:#fff;--code-bg:#151614;--code-text:#c9cbc3;--font:Manrope;--brand-r:7px;--green:#3ccb7f;--yellow:#e9b949;--red:#ff5f57;--blue:#5aa9ff;--purple:#b48cff}
+*{box-sizing:border-box}
+body{margin:0;width:1440px;height:900px;overflow:hidden;background:var(--bg);color:var(--text);font:13px/1.45 var(--font),system-ui,sans-serif;display:grid;grid-template-columns:224px 1fr;grid-template-rows:54px 1fr;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.side{grid-row:1/3;background:var(--side);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;padding:0 8px;margin-bottom:22px;letter-spacing:-.01em}
+.brand i{width:28px;height:28px;border-radius:var(--brand-r);background:var(--accent);display:inline-flex;align-items:center;justify-content:center;color:var(--on-accent);flex:none}
+.brand small{font-weight:600;color:var(--dim);font-size:11px;margin-left:auto}
+.nav a{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:7px;color:var(--muted);font-weight:600}
+.nav a.on{background:var(--panel2);color:var(--text)}
+.nav a .ic{opacity:.8;flex:none}.nav a.on .ic{opacity:1;color:var(--accent)}
+.nav a .n{margin-left:auto;font-size:11px;color:var(--dim)}
+.nav .sec{margin:18px 10px 6px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:700}
+.user{margin-top:auto;display:flex;gap:10px;align-items:center;padding:10px;border-top:1px solid var(--line);color:var(--muted);font-weight:600}
+.user i{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#f45124,#b48cff);display:inline-block}
+.top{display:flex;align-items:center;gap:14px;padding:0 24px;border-bottom:1px solid var(--line)}
+.top h1{font-size:15px;margin:0;font-weight:700}
+.crumb{color:var(--dim);font-weight:600}.crumb b{color:var(--muted);font-weight:600}
+.top .sp{flex:1}
+.search{width:260px;padding:7px 12px;border-radius:7px;background:var(--panel);border:1px solid var(--line);color:var(--dim);font-weight:500}
+.main{padding:20px 24px;overflow:hidden;min-width:0;display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:14px;align-items:center}
+.grid{display:grid;gap:14px}.grid>*,.row>*{min-width:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.card h3{margin:0 0 12px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:8px}
+.card h3 .sp{flex:1}
+.kpi{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.kpi small{font-size:12px;color:var(--muted);font-weight:600;margin-left:6px;letter-spacing:0}
+.sub{color:var(--muted);font-size:12px;margin-top:6px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.bar i.g{background:var(--green)}.bar i.y{background:var(--yellow)}.bar i.r{background:var(--red)}.bar i.b{background:var(--blue)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;font-size:11px;color:var(--dim);font-weight:700;padding:6px 10px;border-bottom:1px solid var(--line);letter-spacing:.04em}
+td{padding:9px 10px;border-bottom:1px solid var(--line2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+tr:last-child td{border-bottom:0}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:1px;background:var(--muted)}
+.dot.g{background:var(--green)}.dot.y{background:var(--yellow)}.dot.r{background:var(--red)}.dot.b{background:var(--blue)}.dot.a{background:var(--accent)}
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;background:var(--panel2);border:1px solid var(--line);font-size:11px;color:var(--muted);font-weight:600;margin-right:4px}
+.tag.g{color:var(--green);border-color:#2f5a44}.tag.r{color:var(--red);border-color:#5c3634}.tag.y{color:var(--yellow);border-color:#5c5030}.tag.a{color:var(--accent);border-color:#6b3020}.tag.b{color:var(--blue);border-color:#2f4a6b}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:7px;background:var(--panel2);border:1px solid var(--line);font-weight:700;font-size:12px;white-space:nowrap}
+.btn.p{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.ghost{background:transparent}
+.log{font:12px/1.65 "JetBrains Mono",ui-monospace,Menlo,monospace;background:var(--code-bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--code-text);white-space:pre;overflow:hidden;flex:1}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:12px}
+.g{color:var(--green)}.y{color:var(--yellow)}.r{color:var(--red)}.b{color:var(--blue)}.a{color:var(--accent)}.p{color:var(--purple)}.m{color:var(--muted)}.d{color:var(--dim)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.tabs span{padding:6px 12px;color:var(--muted);font-weight:600;font-size:12px}
+.tabs span.on{color:var(--text);border-bottom:2px solid var(--accent);margin-bottom:-1px}
+.list{display:flex;flex-direction:column}
+.list > div{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line2)}
+.list > div:last-child{border-bottom:0}
+.list .sp{flex:1}
+.fill{flex:1;min-height:0}
+svg.spark{display:block}
+.kbd{font:11px "JetBrains Mono",monospace;background:var(--code-bg);border:1px solid var(--line);border-radius:4px;padding:1px 5px;color:var(--muted)}
+.tree div{padding:5px 8px;color:var(--muted);font-weight:600;border-radius:6px}
+.tree div.on{background:var(--panel2);color:var(--text)}
+.tree .i1{padding-left:24px}.tree .i2{padding-left:40px}
+.av{display:inline-block;width:22px;height:22px;border-radius:50%;vertical-align:middle;margin-left:-6px;border:2px solid var(--panel)}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0;font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.field span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:8px 10px;border-radius:7px;background:var(--code-bg);border:1px solid var(--line);color:var(--text);font-weight:500;font-size:13px;letter-spacing:0;text-transform:none}
+body.top-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:56px 1fr}
+body.top-layout .top{background:var(--side);gap:22px}
+body.top-layout .brand{margin:0;padding:0;margin-right:10px}
+.hnav{display:flex;gap:4px}.hnav a{white-space:nowrap;padding:7px 12px;border-radius:7px;color:var(--muted);font-weight:600}.hnav a.on{color:var(--text);background:var(--panel2)}
+.pagehead{display:flex;align-items:center;gap:12px}.pagehead h1{font-size:20px;margin:0;font-weight:800;letter-spacing:-.01em}
+</style>
+</head><body class="top-layout">
+<header class="top"><div class="brand"><i><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m17 2 4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="m7 22-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/></svg></i>Relay<small>integration hub</small></div><nav class="hnav"><a class="on">Обзор</a><a class="">Интеграции</a><a class="">Pipelines</a><a class="">События</a><a class="">DLQ</a><a class="">Очереди</a><a class="">Секреты</a><a class="">Настройки</a></nav><span class="sp"></span><span class="search">Поиск событий · event.id…</span><span class="btn">24 часа</span><span class="user" style="border:0;padding:0 0 0 10px;margin:0"><i></i></span></header>
+<main class="main"><div class="pagehead"><span class="crumb">Хаб <b>/</b></span><h1>Обзор</h1></div>
+<div class="grid" style="grid-template-columns:repeat(4,1fr)">
+ <div class="card"><h3>События · 24 ч</h3><div class="kpi">20 600<small>+8% к вчера</small></div><svg class="spark" width="260" height="40" viewBox="0 0 260 40"><path d="M0,40 L0.0,23.4 L11.3,28.8 L22.6,31.2 L33.9,4.0 L45.2,16.2 L56.5,12.1 L67.8,17.1 L79.1,23.3 L90.4,10.6 L101.7,16.3 L113.0,8.8 L124.3,13.2 L135.7,6.7 L147.0,21.2 L158.3,31.6 L169.6,31.8 L180.9,10.9 L192.2,31.1 L203.5,13.4 L214.8,14.6 L226.1,35.0 L237.4,8.7 L248.7,36.0 L260.0,5.7 L260,40 Z" fill="var(--blue)" opacity=".12"/><polyline points="0.0,23.4 11.3,28.8 22.6,31.2 33.9,4.0 45.2,16.2 56.5,12.1 67.8,17.1 79.1,23.3 90.4,10.6 101.7,16.3 113.0,8.8 124.3,13.2 135.7,6.7 147.0,21.2 158.3,31.6 169.6,31.8 180.9,10.9 192.2,31.1 203.5,13.4 214.8,14.6 226.1,35.0 237.4,8.7 248.7,36.0 260.0,5.7" fill="none" stroke="var(--blue)" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+ <div class="card"><h3>Успешно доставлено</h3><div class="kpi g">99.1%<small>184 retry</small></div><svg class="spark" width="260" height="40" viewBox="0 0 260 40"><path d="M0,40 L0.0,13.1 L11.3,35.3 L22.6,26.3 L33.9,28.2 L45.2,9.6 L56.5,11.8 L67.8,4.0 L79.1,33.1 L90.4,21.0 L101.7,35.2 L113.0,28.3 L124.3,18.0 L135.7,35.3 L147.0,29.1 L158.3,12.8 L169.6,16.5 L180.9,28.3 L192.2,14.9 L203.5,7.0 L214.8,36.0 L226.1,7.1 L237.4,11.0 L248.7,23.9 L260.0,30.6 L260,40 Z" fill="var(--green)" opacity=".12"/><polyline points="0.0,13.1 11.3,35.3 22.6,26.3 33.9,28.2 45.2,9.6 56.5,11.8 67.8,4.0 79.1,33.1 90.4,21.0 101.7,35.2 113.0,28.3 124.3,18.0 135.7,35.3 147.0,29.1 158.3,12.8 169.6,16.5 180.9,28.3 192.2,14.9 203.5,7.0 214.8,36.0 226.1,7.1 237.4,11.0 248.7,23.9 260.0,30.6" fill="none" stroke="var(--green)" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+ <div class="card"><h3>Dead-letter queue</h3><div class="kpi r">37<small>ждут разбора</small></div><div class="sub"><span class="tag r">legacy.order.created · 31</span><span class="tag y">stripe · 6</span></div></div>
+ <div class="card"><h3>Очереди RabbitMQ</h3><div class="kpi">12<small>4 воркера · 0 лаг</small></div><div class="sub">relay.* · prefetch 32 · ack ручной</div></div>
+</div>
+<div class="card"><h3>Pipeline · Stripe → 1C<span class="sp"></span><span class="tag g">активен</span><span class="btn ghost">Тест</span><span class="btn ghost">Версии</span></h3><div class="row" style="gap:8px"><div class="card" style="flex:1;background:var(--panel2);padding:12px;"><div class="d" style="font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700">source</div><b style="display:block;margin:4px 0">Stripe webhook</b><div class="mono m" style="font-size:11px">POST /hooks/stripe · HMAC</div></div><span class=d style=font-size:18px>→</span><div class="card" style="flex:1;background:var(--panel2);padding:12px;"><div class="d" style="font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700">validate</div><b style="display:block;margin:4px 0">JSON schema</b><div class="mono m" style="font-size:11px">invoice.v2</div></div><span class=d style=font-size:18px>→</span><div class="card" style="flex:1;background:var(--panel2);padding:12px;border-color:var(--accent)"><div class="d" style="font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700">transform</div><b style="display:block;margin:4px 0">JS mapping</b><div class="mono m" style="font-size:11px">amount → сумма, RUB</div></div><span class=d style=font-size:18px>→</span><div class="card" style="flex:1;background:var(--panel2);padding:12px;"><div class="d" style="font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700">route</div><b style="display:block;margin:4px 0">RabbitMQ</b><div class="mono m" style="font-size:11px">relay.1c.invoices</div></div><span class=d style=font-size:18px>→</span><div class="card" style="flex:1;background:var(--panel2);padding:12px;"><div class="d" style="font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;font-weight:700">destination</div><b style="display:block;margin:4px 0">1C REST</b><div class="mono m" style="font-size:11px">POST /api/invoices</div></div></div><div class="row" style="margin-top:12px;font-size:12px"><span class="tag">retry: экспоненциально · 5 попыток · 30 s → 8 min</span><span class="tag">timeout 10 s</span><span class="tag">идемпотентность по event.id</span><span class="tag a">DLQ → relay.dlq.1c</span></div></div>
+<div class="grid fill" style="grid-template-columns:1fr 1.4fr">
+ <div class="card"><h3>Интеграции<span class="sp"></span><span class="btn p">+ Подключить</span></h3><div class="list"><div><span class="dot g"></span><div><b>ГИС · SOAP</b><div class="m" style="font-size:11.5px">soap</div></div><span class="sp"></span><span class="mono m">12 340 / сут</span><span class="mono g" style="width:44px;text-align:right">0.2%</span></div><div><span class="dot g"></span><div><b>1C · REST</b><div class="m" style="font-size:11.5px">rest</div></div><span class="sp"></span><span class="mono m">4 812 / сут</span><span class="mono g" style="width:44px;text-align:right">0.0%</span></div><div><span class="dot g"></span><div><b>Telegram Bot API</b><div class="m" style="font-size:11.5px">webhook</div></div><span class="sp"></span><span class="mono m">2 190 / сут</span><span class="mono g" style="width:44px;text-align:right">0.1%</span></div><div><span class="dot y"></span><div><b>Stripe webhooks</b><div class="m" style="font-size:11.5px">webhook</div></div><span class="sp"></span><span class="mono m">318 / сут</span><span class="mono y" style="width:44px;text-align:right">3.4%</span></div><div><span class="dot g"></span><div><b>Email · SMTP</b><div class="m" style="font-size:11.5px">smtp</div></div><span class="sp"></span><span class="mono m">940 / сут</span><span class="mono g" style="width:44px;text-align:right">0.4%</span></div><div><span class="dot r"></span><div><b>Legacy PHP API</b><div class="m" style="font-size:11.5px">rest</div></div><span class="sp"></span><span class="mono m">—</span><span class="mono r" style="width:44px;text-align:right">100%</span></div></div></div>
+ <div class="card"><h3>Лента событий<span class="sp"></span><span class="dot g"></span><span class="m">live</span></h3><table><tr><th>Время</th><th>Событие</th><th>Назначение</th><th>Статус</th></tr><tr><td class="mono d">14:02:11</td><td class="mono">stripe.invoice.paid</td><td class="m">→ 1C</td><td><span class="dot g"></span><span class="m">ok · 212 ms</span></td></tr><tr><td class="mono d">14:02:09</td><td class="mono">gis.ObjectChanged</td><td class="m">→ Nexus</td><td><span class="dot g"></span><span class="m">ok · 318 ms</span></td></tr><tr><td class="mono d">14:02:04</td><td class="mono">tg.message</td><td class="m">→ Nexus</td><td><span class="dot g"></span><span class="m">ok · 41 ms</span></td></tr><tr><td class="mono d">14:01:58</td><td class="mono">stripe.charge.failed</td><td class="m">→ 1C</td><td><span class="dot y"></span><span class="y">retry 2/5 · 30 s</span></td></tr><tr><td class="mono d">14:01:40</td><td class="mono">legacy.order.created</td><td class="m">→ Nexus</td><td><span class="dot r"></span><span class="r">DLQ · ECONNREFUSED</span></td></tr><tr><td class="mono d">14:01:33</td><td class="mono">gis.ObjectChanged</td><td class="m">→ Nexus</td><td><span class="dot g"></span><span class="m">ok · 301 ms</span></td></tr></table></div>
+</div></main></body></html>

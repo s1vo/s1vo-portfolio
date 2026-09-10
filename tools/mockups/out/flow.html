@@ -1,0 +1,95 @@
+<!doctype html><html lang="ru" style="--bg:#f3f4f7;--side:#ffffff;--panel:#ffffff;--panel2:#eef0f5;--line:#e1e4ec;--line2:#e8eaf0;--text:#17181c;--muted:#5f6470;--dim:#9a9fab;--accent:#7c5cff;--code-bg:#f6f7fa;--code-text:#23252b;--brand-r:10px;--font:'Inter'"><head><meta charset="utf-8"><title>Flow</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1e1f1c;--side:#181917;--panel:#262824;--panel2:#2e302c;--line:#3a3d38;--line2:#30322e;--text:#f1efe9;--muted:#9c9e96;--dim:#6f716a;--accent:#f45124;--on-accent:#fff;--code-bg:#151614;--code-text:#c9cbc3;--font:Manrope;--brand-r:7px;--green:#3ccb7f;--yellow:#e9b949;--red:#ff5f57;--blue:#5aa9ff;--purple:#b48cff}
+*{box-sizing:border-box}
+body{margin:0;width:1440px;height:900px;overflow:hidden;background:var(--bg);color:var(--text);font:13px/1.45 var(--font),system-ui,sans-serif;display:grid;grid-template-columns:224px 1fr;grid-template-rows:54px 1fr;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.side{grid-row:1/3;background:var(--side);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;padding:0 8px;margin-bottom:22px;letter-spacing:-.01em}
+.brand i{width:28px;height:28px;border-radius:var(--brand-r);background:var(--accent);display:inline-flex;align-items:center;justify-content:center;color:var(--on-accent);flex:none}
+.brand small{font-weight:600;color:var(--dim);font-size:11px;margin-left:auto}
+.nav a{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:7px;color:var(--muted);font-weight:600}
+.nav a.on{background:var(--panel2);color:var(--text)}
+.nav a .ic{opacity:.8;flex:none}.nav a.on .ic{opacity:1;color:var(--accent)}
+.nav a .n{margin-left:auto;font-size:11px;color:var(--dim)}
+.nav .sec{margin:18px 10px 6px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:700}
+.user{margin-top:auto;display:flex;gap:10px;align-items:center;padding:10px;border-top:1px solid var(--line);color:var(--muted);font-weight:600}
+.user i{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#f45124,#b48cff);display:inline-block}
+.top{display:flex;align-items:center;gap:14px;padding:0 24px;border-bottom:1px solid var(--line)}
+.top h1{font-size:15px;margin:0;font-weight:700}
+.crumb{color:var(--dim);font-weight:600}.crumb b{color:var(--muted);font-weight:600}
+.top .sp{flex:1}
+.search{width:260px;padding:7px 12px;border-radius:7px;background:var(--panel);border:1px solid var(--line);color:var(--dim);font-weight:500}
+.main{padding:20px 24px;overflow:hidden;min-width:0;display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:14px;align-items:center}
+.grid{display:grid;gap:14px}.grid>*,.row>*{min-width:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.card h3{margin:0 0 12px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:8px}
+.card h3 .sp{flex:1}
+.kpi{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.kpi small{font-size:12px;color:var(--muted);font-weight:600;margin-left:6px;letter-spacing:0}
+.sub{color:var(--muted);font-size:12px;margin-top:6px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.bar i.g{background:var(--green)}.bar i.y{background:var(--yellow)}.bar i.r{background:var(--red)}.bar i.b{background:var(--blue)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;font-size:11px;color:var(--dim);font-weight:700;padding:6px 10px;border-bottom:1px solid var(--line);letter-spacing:.04em}
+td{padding:9px 10px;border-bottom:1px solid var(--line2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+tr:last-child td{border-bottom:0}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:1px;background:var(--muted)}
+.dot.g{background:var(--green)}.dot.y{background:var(--yellow)}.dot.r{background:var(--red)}.dot.b{background:var(--blue)}.dot.a{background:var(--accent)}
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;background:var(--panel2);border:1px solid var(--line);font-size:11px;color:var(--muted);font-weight:600;margin-right:4px}
+.tag.g{color:var(--green);border-color:#2f5a44}.tag.r{color:var(--red);border-color:#5c3634}.tag.y{color:var(--yellow);border-color:#5c5030}.tag.a{color:var(--accent);border-color:#6b3020}.tag.b{color:var(--blue);border-color:#2f4a6b}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:7px;background:var(--panel2);border:1px solid var(--line);font-weight:700;font-size:12px;white-space:nowrap}
+.btn.p{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.ghost{background:transparent}
+.log{font:12px/1.65 "JetBrains Mono",ui-monospace,Menlo,monospace;background:var(--code-bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--code-text);white-space:pre;overflow:hidden;flex:1}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:12px}
+.g{color:var(--green)}.y{color:var(--yellow)}.r{color:var(--red)}.b{color:var(--blue)}.a{color:var(--accent)}.p{color:var(--purple)}.m{color:var(--muted)}.d{color:var(--dim)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.tabs span{padding:6px 12px;color:var(--muted);font-weight:600;font-size:12px}
+.tabs span.on{color:var(--text);border-bottom:2px solid var(--accent);margin-bottom:-1px}
+.list{display:flex;flex-direction:column}
+.list > div{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line2)}
+.list > div:last-child{border-bottom:0}
+.list .sp{flex:1}
+.fill{flex:1;min-height:0}
+svg.spark{display:block}
+.kbd{font:11px "JetBrains Mono",monospace;background:var(--code-bg);border:1px solid var(--line);border-radius:4px;padding:1px 5px;color:var(--muted)}
+.tree div{padding:5px 8px;color:var(--muted);font-weight:600;border-radius:6px}
+.tree div.on{background:var(--panel2);color:var(--text)}
+.tree .i1{padding-left:24px}.tree .i2{padding-left:40px}
+.av{display:inline-block;width:22px;height:22px;border-radius:50%;vertical-align:middle;margin-left:-6px;border:2px solid var(--panel)}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0;font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.field span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:8px 10px;border-radius:7px;background:var(--code-bg);border:1px solid var(--line);color:var(--text);font-weight:500;font-size:13px;letter-spacing:0;text-transform:none}
+body.top-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:56px 1fr}
+body.top-layout .top{background:var(--side);gap:22px}
+body.top-layout .brand{margin:0;padding:0;margin-right:10px}
+.hnav{display:flex;gap:4px}.hnav a{white-space:nowrap;padding:7px 12px;border-radius:7px;color:var(--muted);font-weight:600}.hnav a.on{color:var(--text);background:var(--panel2)}
+.pagehead{display:flex;align-items:center;gap:12px}.pagehead h1{font-size:20px;margin:0;font-weight:800;letter-spacing:-.01em}
+</style>
+</head><body class="side-layout">
+<aside class="side"><div class="brand"><i><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></svg></i>Flow<small>api studio</small></div><nav class="nav"><div class="sec">Рабочее пространство</div><a class="on"><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>Коллекции<span class=n>3</span></a><a class=""><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>Окружения<span class=n>2</span></a><a class=""><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>История</a><a class=""><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg>Mock-сервер</a><div class="sec">Импорт</div><a class=""><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>OpenAPI / Swagger</a><a class=""><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m16 18 6-6-6-6M8 6l-6 6 6 6"/></svg>WSDL</a><a class=""><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>Настройки</a></nav><div class="user"><i></i>Михаил С.<span class="n" style="margin-left:auto;color:var(--dim)">Owner</span></div></aside><header class="top"><span class="crumb">Nexus API <b>/</b> Servers <b>/</b></span><h1>GET server by id</h1><span class="sp"></span><span class="search">Поиск запросов…</span><span class="btn">production ▾</span><span class="btn">Сохранить</span></header>
+<main class="main">
+<div class="grid fill" style="grid-template-columns:230px 1fr 1fr">
+ <div class="card"><h3>Коллекции</h3><div class="tree"><div>Nexus API <span class="d" style="float:right">24</span></div><div class="i1">Servers</div><div class="i2 on">GET server by id</div><div class="i2">PUT update server</div><div class="i2">POST restart container</div><div class="i1">Metrics</div><div class="i1">Alerts</div><div>ГИС · SOAP <span class="d" style="float:right">7</span></div><div class="i1">GetObjectInfo</div><div class="i1">SearchObjects</div><div>Pulse API <span class="d" style="float:right">11</span></div></div>
+ <h3 style="margin-top:18px">История</h3><div class="list" style="font-size:12px"><div><span class="tag b" style="margin:0">GET</span><span class="mono" style="font-size:11.5px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/v1/servers/srv_01J9ZK</span><span class="mono g">200</span></div><div><span class="tag g" style="margin:0">POST</span><span class="mono" style="font-size:11.5px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/v1/containers/restart</span><span class="mono g">202</span></div><div><span class="tag b" style="margin:0">GET</span><span class="mono" style="font-size:11.5px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/v1/metrics?range=1h</span><span class="mono g">200</span></div><div><span class="tag p" style="margin:0">SOAP</span><span class="mono" style="font-size:11.5px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">GetObjectInfo</span><span class="mono g">200</span></div><div><span class="tag g" style="margin:0">PUT</span><span class="mono" style="font-size:11.5px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/v1/servers/srv_01J9ZK</span><span class="mono g">200</span></div><div><span class="tag b" style="margin:0">GET</span><span class="mono" style="font-size:11.5px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">/v1/alerts</span><span class="mono g">200</span></div></div></div>
+ <div class="card" style="display:flex;flex-direction:column;gap:12px"><div class="row"><span class="tag b" style="font-size:12px;padding:6px 10px">GET</span><span class="field" style="flex:1"><span class="mono">{{baseUrl}}/v1/servers/{{serverId}}</span></span><span class="btn p">Отправить</span></div>
+  <div class="tabs"><span>Params</span><span>Auth</span><span class="on">Headers <span class="d">3</span></span><span>Body</span><span>Tests</span></div>
+  <table><tr><th>Ключ</th><th>Значение</th></tr><tr><td class="mono">Authorization</td><td class="mono m">Bearer {{token}}</td></tr><tr><td class="mono">Accept</td><td class="mono m">application/json</td></tr><tr><td class="mono">X-Request-Id</td><td class="mono m">{{$uuid}}</td></tr></table>
+  <div class="card" style="background:var(--panel2);margin-top:auto"><h3>Environment · production<span class="sp"></span><span class="tag g">активно</span></h3><div class="list" style="font-size:12px"><div><span class="mono a">baseUrl</span><span class="sp"></span><span class="mono m">https://api.nexus.local</span></div><div><span class="mono a">serverId</span><span class="sp"></span><span class="mono m">srv_01J9ZK</span></div><div><span class="mono a">token</span><span class="sp"></span><span class="mono m">•••••• (secret)</span></div></div></div>
+  <div class="d" style="font-size:11.5px">Импортировано из OpenAPI 3.1 · nexus-api.yaml · 24 операции</div></div>
+ <div class="card" style="display:flex;flex-direction:column"><h3>Ответ<span class="sp"></span><span class="tag g">200 OK</span><span class="tag">12 ms</span><span class="tag">1.2 KB</span></h3><div class="tabs"><span class="on">Body</span><span>Headers <span class="d">9</span></span><span>Cookies</span><span>Tests <span class="g">3/3</span></span></div><div class="log">{
+  <span class=b>"data"</span>: {
+    <span class=b>"id"</span>: <span class=y>"srv_01J9ZK"</span>,
+    <span class=b>"name"</span>: <span class=y>"prod-api-01"</span>,
+    <span class=b>"status"</span>: <span class=y>"online"</span>,
+    <span class=b>"metrics"</span>: { <span class=b>"cpu"</span>: <span class=a>62.4</span>, <span class=b>"ram"</span>: <span class=a>71.0</span>, <span class=b>"disk"</span>: <span class=a>48.2</span> },
+    <span class=b>"containers"</span>: [
+      { <span class=b>"name"</span>: <span class=y>"api-gateway"</span>, <span class=b>"state"</span>: <span class=y>"running"</span> },
+      { <span class=b>"name"</span>: <span class=y>"auth-service"</span>, <span class=b>"state"</span>: <span class=y>"running"</span> }
+    ]
+  },
+  <span class=b>"meta"</span>: { <span class=b>"requestId"</span>: <span class=y>"c1f3…9a"</span>, <span class=b>"took"</span>: <span class=a>12</span> }
+}</div></div>
+</div></main></body></html>

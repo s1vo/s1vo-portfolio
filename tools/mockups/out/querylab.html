@@ -1,0 +1,100 @@
+<!doctype html><html lang="ru" style="--bg:#121417;--side:#0d0f11;--panel:#191c20;--panel2:#21252a;--line:#2b3036;--line2:#22262b;--text:#e6e8eb;--muted:#8b929b;--dim:#5d646d;--accent:#f5b942;--on-accent:#1a1200;--code-bg:#0d0f11;--code-text:#cfd3d8;--brand-r:3px;--font:'IBM Plex Sans'"><head><meta charset="utf-8"><title>QueryLab</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#1e1f1c;--side:#181917;--panel:#262824;--panel2:#2e302c;--line:#3a3d38;--line2:#30322e;--text:#f1efe9;--muted:#9c9e96;--dim:#6f716a;--accent:#f45124;--on-accent:#fff;--code-bg:#151614;--code-text:#c9cbc3;--font:Manrope;--brand-r:7px;--green:#3ccb7f;--yellow:#e9b949;--red:#ff5f57;--blue:#5aa9ff;--purple:#b48cff}
+*{box-sizing:border-box}
+body{margin:0;width:1440px;height:900px;overflow:hidden;background:var(--bg);color:var(--text);font:13px/1.45 var(--font),system-ui,sans-serif;display:grid;grid-template-columns:224px 1fr;grid-template-rows:54px 1fr;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+.side{grid-row:1/3;background:var(--side);border-right:1px solid var(--line);padding:18px 14px;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:16px;padding:0 8px;margin-bottom:22px;letter-spacing:-.01em}
+.brand i{width:28px;height:28px;border-radius:var(--brand-r);background:var(--accent);display:inline-flex;align-items:center;justify-content:center;color:var(--on-accent);flex:none}
+.brand small{font-weight:600;color:var(--dim);font-size:11px;margin-left:auto}
+.nav a{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:7px;color:var(--muted);font-weight:600}
+.nav a.on{background:var(--panel2);color:var(--text)}
+.nav a .ic{opacity:.8;flex:none}.nav a.on .ic{opacity:1;color:var(--accent)}
+.nav a .n{margin-left:auto;font-size:11px;color:var(--dim)}
+.nav .sec{margin:18px 10px 6px;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:700}
+.user{margin-top:auto;display:flex;gap:10px;align-items:center;padding:10px;border-top:1px solid var(--line);color:var(--muted);font-weight:600}
+.user i{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#f45124,#b48cff);display:inline-block}
+.top{display:flex;align-items:center;gap:14px;padding:0 24px;border-bottom:1px solid var(--line)}
+.top h1{font-size:15px;margin:0;font-weight:700}
+.crumb{color:var(--dim);font-weight:600}.crumb b{color:var(--muted);font-weight:600}
+.top .sp{flex:1}
+.search{width:260px;padding:7px 12px;border-radius:7px;background:var(--panel);border:1px solid var(--line);color:var(--dim);font-weight:500}
+.main{padding:20px 24px;overflow:hidden;min-width:0;display:flex;flex-direction:column;gap:14px}
+.row{display:flex;gap:14px;align-items:center}
+.grid{display:grid;gap:14px}.grid>*,.row>*{min-width:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+.card h3{margin:0 0 12px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;display:flex;align-items:center;gap:8px}
+.card h3 .sp{flex:1}
+.kpi{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1}
+.kpi small{font-size:12px;color:var(--muted);font-weight:600;margin-left:6px;letter-spacing:0}
+.sub{color:var(--muted);font-size:12px;margin-top:6px}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-top:8px}.bar i{display:block;height:100%;background:var(--accent);border-radius:3px}
+.bar i.g{background:var(--green)}.bar i.y{background:var(--yellow)}.bar i.r{background:var(--red)}.bar i.b{background:var(--blue)}
+table{width:100%;border-collapse:collapse;font-size:12.5px}
+th{text-align:left;font-size:11px;color:var(--dim);font-weight:700;padding:6px 10px;border-bottom:1px solid var(--line);letter-spacing:.04em}
+td{padding:9px 10px;border-bottom:1px solid var(--line2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+tr:last-child td{border-bottom:0}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:1px;background:var(--muted)}
+.dot.g{background:var(--green)}.dot.y{background:var(--yellow)}.dot.r{background:var(--red)}.dot.b{background:var(--blue)}.dot.a{background:var(--accent)}
+.tag{display:inline-block;padding:2px 8px;border-radius:6px;background:var(--panel2);border:1px solid var(--line);font-size:11px;color:var(--muted);font-weight:600;margin-right:4px}
+.tag.g{color:var(--green);border-color:#2f5a44}.tag.r{color:var(--red);border-color:#5c3634}.tag.y{color:var(--yellow);border-color:#5c5030}.tag.a{color:var(--accent);border-color:#6b3020}.tag.b{color:var(--blue);border-color:#2f4a6b}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:7px;background:var(--panel2);border:1px solid var(--line);font-weight:700;font-size:12px;white-space:nowrap}
+.btn.p{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn.ghost{background:transparent}
+.log{font:12px/1.65 "JetBrains Mono",ui-monospace,Menlo,monospace;background:var(--code-bg);border:1px solid var(--line);border-radius:8px;padding:12px 14px;color:var(--code-text);white-space:pre;overflow:hidden;flex:1}
+.mono{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;font-size:12px}
+.g{color:var(--green)}.y{color:var(--yellow)}.r{color:var(--red)}.b{color:var(--blue)}.a{color:var(--accent)}.p{color:var(--purple)}.m{color:var(--muted)}.d{color:var(--dim)}
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.tabs span{padding:6px 12px;color:var(--muted);font-weight:600;font-size:12px}
+.tabs span.on{color:var(--text);border-bottom:2px solid var(--accent);margin-bottom:-1px}
+.list{display:flex;flex-direction:column}
+.list > div{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line2)}
+.list > div:last-child{border-bottom:0}
+.list .sp{flex:1}
+.fill{flex:1;min-height:0}
+svg.spark{display:block}
+.kbd{font:11px "JetBrains Mono",monospace;background:var(--code-bg);border:1px solid var(--line);border-radius:4px;padding:1px 5px;color:var(--muted)}
+.tree div{padding:5px 8px;color:var(--muted);font-weight:600;border-radius:6px}
+.tree div.on{background:var(--panel2);color:var(--text)}
+.tree .i1{padding-left:24px}.tree .i2{padding-left:40px}
+.av{display:inline-block;width:22px;height:22px;border-radius:50%;vertical-align:middle;margin-left:-6px;border:2px solid var(--panel)}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0;font-size:11px;color:var(--muted);font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.field span{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:8px 10px;border-radius:7px;background:var(--code-bg);border:1px solid var(--line);color:var(--text);font-weight:500;font-size:13px;letter-spacing:0;text-transform:none}
+body.top-layout{grid-template-columns:minmax(0,1fr);grid-template-rows:56px 1fr}
+body.top-layout .top{background:var(--side);gap:22px}
+body.top-layout .brand{margin:0;padding:0;margin-right:10px}
+.hnav{display:flex;gap:4px}.hnav a{white-space:nowrap;padding:7px 12px;border-radius:7px;color:var(--muted);font-weight:600}.hnav a.on{color:var(--text);background:var(--panel2)}
+.pagehead{display:flex;align-items:center;gap:12px}.pagehead h1{font-size:20px;margin:0;font-weight:800;letter-spacing:-.01em}
+</style>
+</head><body class="side-layout">
+<aside class="side"><div class="brand"><i><svg class="ic " width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></i>QueryLab<small>db explorer</small></div><nav class="nav"><div class="sec">База</div><a class="on"><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m4 17 6-6-6-6M12 19h8"/></svg>SQL-редактор</a><a class=""><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>Таблицы<span class=n>42</span></a><a class=""><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>Схема · ERD</a><a class=""><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>История</a><div class="sec">Производительность</div><a class=""><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Медленные запросы<span class=n>3</span></a><a class=""><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>Индексы</a><a class=""><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>Активность</a><a class=""><svg class="ic " width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>Настройки</a></nav><div class="user"><i></i>Михаил С.<span class="n" style="margin-left:auto;color:var(--dim)">Owner</span></div></aside><header class="top"><span class="crumb">gis-prod <b>/</b></span><h1>SQL-редактор</h1><span class="sp"></span><span class="search">Поиск таблиц, колонок…</span><span class="btn">Транзакция: auto</span></header>
+<main class="main">
+<div class="grid fill" style="grid-template-columns:220px 1fr">
+ <div class="card"><h3>Подключения</h3><div class="tree"><div class="on"><span class="dot g"></span>gis-prod · PostgreSQL 16</div><div class="i1">public <span class="d" style="float:right">42</span></div><div class="i2">objects</div><div class="i2">inspections</div><div class="i2">regions</div><div class="i2">audit_log</div><div class="i1">reports <span class="d" style="float:right">8</span></div><div><span class="dot g"></span>nexus-prod · PG 16</div><div><span class="dot"></span>legacy · PG 12</div></div><h3 style="margin-top:18px">Relations · objects</h3><div class="list" style="font-size:12px"><div><span class="mono b">→</span>regions.id<span class="sp"></span><span class="d">FK</span></div><div><span class="mono b">←</span>inspections.object_id<span class="sp"></span><span class="d">1:N</span></div><div><span class="mono b">←</span>documents.object_id<span class="sp"></span><span class="d">1:N</span></div></div></div>
+ <div style="display:flex;flex-direction:column;gap:14px;min-height:0">
+  <div class="card" style="display:flex;flex-direction:column"><div class="tabs" style="margin-bottom:8px"><span class="on">query-1.sql</span><span>slow-audit.sql</span><span class="d">+</span><span class="sp" style="flex:1"></span><span class="tag g">gis-prod</span><span class="btn p">Выполнить ⌘↵</span></div><div class="log" style="flex:none"><span class=p>SELECT</span> o.id, o.name, r.name <span class=p>AS</span> region,
+       <span class=b>count</span>(i.id) <span class=p>AS</span> inspections,
+       <span class=b>max</span>(i.inspected_at) <span class=p>AS</span> last_inspection
+<span class=p>FROM</span> objects o
+<span class=p>JOIN</span> regions r <span class=p>ON</span> r.id = o.region_id
+<span class=p>LEFT JOIN</span> inspections i <span class=p>ON</span> i.object_id = o.id
+<span class=p>WHERE</span> o.status = <span class=y>'active'</span>
+  <span class=p>AND</span> o.updated_at &gt; now() - <span class=p>interval</span> <span class=y>'30 days'</span>
+<span class=p>GROUP BY</span> o.id, r.name
+<span class=p>ORDER BY</span> inspections <span class=p>DESC</span>
+<span class=p>LIMIT</span> <span class=a>50</span>;</div></div>
+  <div class="grid fill" style="grid-template-columns:1.1fr 1fr;min-height:0"><div class="card"><h3>Результат<span class="sp"></span><span class="tag">50 строк · 38.6 ms</span><span class="btn ghost">CSV</span></h3><table style="table-layout:fixed"><colgroup><col style="width:11%"><col style="width:37%"><col style="width:22%"><col style="width:11%"><col style="width:19%"></colgroup><tr><th>id</th><th>name</th><th>region</th><th>insp.</th><th>last</th></tr><tr><td class="mono d">10482</td><td>Мост через р. Ока, км 214</td><td class="m">Калужская обл.</td><td class="mono">18</td><td class="mono m">2026-09-08</td></tr><tr><td class="mono d">9931</td><td>Водозабор №3</td><td class="m">Тульская обл.</td><td class="mono">14</td><td class="mono m">2026-09-09</td></tr><tr><td class="mono d">10210</td><td>Подстанция 110 кВ «Северная»</td><td class="m">Калужская обл.</td><td class="mono">12</td><td class="mono m">2026-09-02</td></tr><tr><td class="mono d">8877</td><td>Путепровод, км 88</td><td class="m">Московская обл.</td><td class="mono">11</td><td class="mono m">2026-09-07</td></tr><tr><td class="mono d">10501</td><td>Очистные сооружения</td><td class="m">Тульская обл.</td><td class="mono">9</td><td class="mono m">2026-08-30</td></tr><tr><td class="mono d">9120</td><td>Газораспределительный пункт</td><td class="m">Московская обл.</td><td class="mono">7</td><td class="mono m">2026-09-05</td></tr></table></div>
+  <div style="display:flex;flex-direction:column;gap:14px;min-height:0"><div class="card fill" style="display:flex;flex-direction:column"><h3>EXPLAIN ANALYZE</h3><div class="log" style="font-size:11px"><span class=g>Limit</span>  rows=50  actual 38.2 ms
+ → <span class=g>Sort</span>  rows=2716  top-N heapsort, 32 kB
+   → <span class=g>HashAggregate</span>  rows=2716  36.9 ms
+     → <span class=g>Hash Left Join</span>  rows=14 109  29.4 ms
+       → <span class=y>Seq Scan</span> on objects o  rows=2716  6.8 ms
+           Filter: status = 'active' AND updated_at &gt; …
+           <span class=r>Rows Removed by Filter: 18 402</span>
+       → <span class=g>Index Scan</span> inspections_object_id_idx  0.03 ms
+<span class=m>Planning 0.41 ms · Execution 38.6 ms</span>
+<span class=y>⚠ Seq Scan: индекс (status, updated_at) даст ~6×</span></div></div><div class="card"><h3>Медленные запросы · 24 ч</h3><div class="list"><div><span class="mono" style="font-size:11.5px">objects · report_summary()</span><span class="sp"></span><span class="mono y">2.4 s</span><span class="mono d">412 / ч</span></div><div><span class="mono" style="font-size:11.5px">inspections · full export</span><span class="sp"></span><span class="mono y">1.1 s</span><span class="mono d">12 / ч</span></div><div><span class="mono" style="font-size:11.5px">SELECT … FROM audit_log WHERE …</span><span class="sp"></span><span class="mono y">640 ms</span><span class="mono d">1 890 / ч</span></div></div></div></div></div>
+ </div>
+</div></main></body></html>
