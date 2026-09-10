@@ -1,0 +1,26 @@
+.page { padding-block: clamp(28px, 3vw, 44px) clamp(24px, 3vw, 40px); }
+.back { display: inline-flex; align-items: center; min-height: 44px; font-size: var(--fs-ui); font-weight: 600; }
+.head { display: grid; grid-template-columns: 54fr 46fr; gap: clamp(24px, 4vw, 56px); align-items: center; margin-top: var(--space-4); padding-block: clamp(16px, 2.4vw, 32px) clamp(24px, 3vw, 40px); border-bottom: 1px solid var(--color-line); }
+.title { margin-top: var(--space-3); font-size: clamp(26px, 3.6vw, 48px); line-height: 1.08; letter-spacing: -0.03em; overflow-wrap: anywhere; }
+.lead { margin-top: var(--space-4); font-size: clamp(17px, 1.4vw, 20px); font-weight: 500; color: var(--color-muted); max-width: 40ch; }
+.tags { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-6); }
+.imgBox { width: 100%; border-radius: var(--radius-panel); }
+.img { width: 100%; height: auto; }
+.blocks { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(28px, 4vw, 56px); margin-top: clamp(36px, 4vw, 56px); max-width: 1000px; }
+.block p { max-width: 60ch; }
+.h2 { font-size: 22px; letter-spacing: -0.015em; margin-bottom: var(--space-3); }
+.list li { position: relative; padding: 10px 0 10px 20px; border-top: 1px solid var(--color-line); }
+.list li:last-child { border-bottom: 1px solid var(--color-line); }
+.list li::before { content: ''; position: absolute; left: 0; top: 19px; width: 8px; height: 8px; border-radius: 50%; background: var(--color-accent); }
+.others { margin-top: clamp(40px, 5vw, 64px); padding-top: var(--space-6); border-top: 1px solid var(--color-line); }
+.otherList { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-3); }
+.otherLink { display: flex; flex-direction: column; gap: var(--space-2); padding: var(--space-4); border: 1px solid var(--color-line); border-radius: var(--radius-panel); transition: border-color var(--duration-fast) var(--ease-ui); }
+.otherLink:hover { border-color: var(--color-text); }
+.otherTitle { display: inline-flex; align-items: center; gap: var(--space-2); font-weight: 700; }
+.otherLink:hover .icon { transform: translateX(3px); }
+.otherLink .icon { transition: transform var(--duration-fast) var(--ease-ui); }
+@media (max-width: 767px) {
+  .head { grid-template-columns: 1fr; }
+  .imgBox { max-width: 360px; justify-self: center; }
+  .blocks { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,53 @@
+:root {
+  --color-page: #f5f3ed;
+  --color-surface: #eae7e1;
+  --color-text: #171916;
+  --color-muted: #535752;
+  --color-line: #c8c6be;
+  --color-dark: #242621;
+  --color-on-dark: #f5f3ed;
+  --color-muted-on-dark: #d2d2cb;
+  --color-line-on-dark: #707269;
+  --color-accent: #f45124;
+  --color-action: #d63d17;
+  --color-action-hover: #bf3513;
+  --color-status: #16804a;
+
+  --font-sans: 'Manrope', 'Arial', sans-serif;
+  --container-max: 1320px;
+  --gutter: clamp(20px, 4vw, 60px);
+  --radius-button: 8px;
+  --radius-panel: 3px;
+  --radius-tag: 8px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --duration-fast: 180ms;
+  --ease-ui: cubic-bezier(0.2, 0, 0, 1);
+
+  /* type scale: desktop first, overridden for phones in global.css */
+  --fs-name: clamp(88px, 9.2vw, 128px);
+  --fs-tagline: clamp(34px, 4vw, 54px);
+  --fs-h2: clamp(34px, 4.2vw, 52px);
+  --fs-h3: clamp(20px, 2.3vw, 32px);
+  --fs-body: clamp(15px, 1.15vw, 17px);
+  --fs-ui: 15px;
+  --fs-label: 11px;
+}
+@media (max-width: 767px) {
+  :root {
+    --gutter: 20px;
+    --fs-name: clamp(46px, 15vw, 72px);
+    --fs-tagline: clamp(28px, 8vw, 36px);
+    --fs-h2: clamp(30px, 8.5vw, 36px);
+    --fs-h3: 22px;
+    --fs-body: 16px;
+  }
+}
+@media (max-width: 340px) { :root { --gutter: 16px; } }
