@@ -31,9 +31,25 @@ export function Experience() {
         </div>
       </div>
       <div id="stack" className={s.stackRow}>
-        <ul className={`container ${s.stack}`} aria-label="Стек">
-          {profile.stack.map((t) => <li key={t}>{t}</li>)}
-        </ul>
+        <div className="container">
+          <div className={s.stackHead}>
+            <h3 className={s.stackTitle}>Стек и навыки</h3>
+            <p className={s.stackNote}>Что использую в работе: от управления командой до инфраструктуры.</p>
+          </div>
+          <dl className={s.sheet}>
+            {profile.stackGroups.map((g) => (
+              <div key={g.title} className={s.sheetRow}>
+                <dt className={s.sheetTitle}>
+                  {g.title}
+                  <span className={s.sheetNote}>{g.note}</span>
+                </dt>
+                <dd className={s.sheetItems}>
+                  {g.items.map((t) => <span key={t}>{t}</span>)}
+                </dd>
+              </div>
+            ))}
+          </dl>
+        </div>
       </div>
     </section>
   );

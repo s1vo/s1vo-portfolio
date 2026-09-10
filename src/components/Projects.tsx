@@ -32,7 +32,7 @@ function Card({ p }: { p: Project }) {
 export function Projects() {
   const [featured, ...rest] = projects;
   return (
-    <section id="projects" className={`container section ${s.section}`} aria-labelledby="projects-title">
+    <section id="projects" className={`container ${s.section}`} aria-labelledby="projects-title">
       <p className="eyebrow">01 / Избранное</p>
       <h2 id="projects-title" className={`h2 ${s.heading}`}>Системы, над которыми работаю</h2>
       <div className={s.grid}>

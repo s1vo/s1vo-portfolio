@@ -17,14 +17,22 @@
 .competency { display: grid; grid-template-columns: 56px 1fr; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--color-line-on-dark); font-size: var(--fs-body); font-weight: 500; }
 .num { font-size: 14px; font-weight: 600; color: var(--color-accent); }
 
-.stackRow { margin-top: clamp(20px, 2.6vw, 36px); border-top: 1px solid var(--color-line-on-dark); }
-.stack { display: flex; flex-wrap: wrap; justify-content: center; padding-block: 14px; font-size: var(--fs-ui); font-weight: 500; }
-.stack li + li::before { content: '·'; margin-inline: clamp(12px, 1.8vw, 26px); color: var(--color-muted-on-dark); }
+.stackRow { margin-top: clamp(20px, 2.6vw, 36px); padding-block: clamp(24px, 3vw, 40px) clamp(32px, 4vw, 56px); border-top: 1px solid var(--color-line-on-dark); }
+.stackHead { display: flex; align-items: baseline; justify-content: space-between; gap: var(--space-4); flex-wrap: wrap; margin-bottom: clamp(20px, 2.4vw, 32px); }
+.stackTitle { font-size: clamp(22px, 2.2vw, 28px); letter-spacing: -0.02em; }
+.stackNote { color: var(--color-muted-on-dark); font-size: 15px; font-weight: 500; }
+.sheet { border-top: 1px solid var(--color-line-on-dark); }
+.sheetRow { display: grid; grid-template-columns: minmax(220px, 34%) 1fr; gap: var(--space-4) clamp(24px, 4vw, 64px); padding: clamp(16px, 1.8vw, 22px) 0; border-bottom: 1px solid var(--color-line-on-dark); }
+.sheetTitle { display: flex; flex-direction: column; gap: 4px; font-size: var(--fs-body); font-weight: 700; }
+.sheetNote { font-size: 14px; font-weight: 500; color: var(--color-muted-on-dark); max-width: 36ch; }
+.sheetItems { display: flex; flex-wrap: wrap; align-content: flex-start; gap: 6px 0; font-size: var(--fs-body); font-weight: 500; }
+.sheetItems span:not(:last-child)::after { content: '·'; margin-inline: 12px; color: var(--color-muted-on-dark); }
 
 @media (max-width: 767px) {
   .cols { grid-template-columns: 1fr; }
   .path { flex-direction: column; gap: var(--space-4); padding-left: 2px; }
   .path::before { left: 7px; right: auto; top: 6px; bottom: 6px; width: 1px; height: auto; }
   .step, .step:last-child, .step:not(:first-child):not(:last-child) { flex-direction: row; align-items: center; gap: var(--space-4); }
-  .stack { justify-content: flex-start; }
+  .sheetRow { grid-template-columns: 1fr; gap: var(--space-2); }
+  .stackHead { flex-direction: column; gap: var(--space-1); }
 }

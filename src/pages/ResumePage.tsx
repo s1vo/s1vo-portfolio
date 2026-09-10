@@ -51,8 +51,15 @@ export function ResumePage() {
         </section>
 
         <section aria-labelledby="r-stack">
-          <h2 id="r-stack" className={s.h2}>Стек</h2>
-          <p>{profile.resumeStack.join(', ')}</p>
+          <h2 id="r-stack" className={s.h2}>Стек и навыки</h2>
+          <dl className={s.stackList}>
+            {profile.stackGroups.map((g) => (
+              <div key={g.title} className={s.stackRow}>
+                <dt>{g.title}</dt>
+                <dd>{g.items.join(', ')}</dd>
+              </div>
+            ))}
+          </dl>
         </section>
 
         <section aria-labelledby="r-contacts">

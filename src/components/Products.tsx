@@ -5,7 +5,7 @@ import s from './Products.module.css';
 
 export function Products() {
   return (
-    <section id="products" className={`container section ${s.section}`} aria-labelledby="products-title">
+    <section id="products" className={`container ${s.section}`} aria-labelledby="products-title">
       <p className="eyebrow">02 / Продукты</p>
       <h2 id="products-title" className={`h2 ${s.heading}`}>Собственные продукты</h2>
       <p className={s.lead}>Инструменты для разработки и эксплуатации, которые проектирую и строю сам: от системного дизайна до интерфейса.</p>

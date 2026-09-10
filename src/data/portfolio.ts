@@ -37,6 +37,15 @@ export const profile = {
   careerSteps: ['Junior', 'Middle', 'Senior', 'Team Lead', 'CTO'],
   competencies: ['Архитектура и интеграции', 'Техническое руководство', 'Модернизация legacy'],
   stack: ['React', 'TypeScript', 'Node.js', 'PHP', 'PostgreSQL', 'Docker'],
+  stackGroups: [
+    { title: 'Управление и архитектура', note: 'Проектирую систему целиком и веду команду до 10 разработчиков', items: ['System Design', 'Техническая стратегия', 'Руководство командой', 'Планирование', 'Code Review', 'Модернизация legacy'] },
+    { title: 'Интеграции', note: 'Связываю систему с внешними и государственными сервисами', items: ['REST', 'SOAP', 'OpenAPI', 'RabbitMQ', 'Webhooks'] },
+    { title: 'Frontend', note: 'Интерфейсы корпоративных систем и картографических модулей', items: ['React', 'Next.js', 'TypeScript', 'JavaScript', 'SCSS', 'Tailwind', 'Vite'] },
+    { title: 'Backend', note: 'API, бизнес-логика и фоновые задачи', items: ['Node.js', 'NestJS', 'Express.js', 'Laravel', 'PHP'] },
+    { title: 'Данные', note: 'Схемы, миграции, оптимизация запросов и геоданные', items: ['PostgreSQL', 'PostGIS', 'SQL', 'MongoDB'] },
+    { title: 'Инфраструктура', note: 'Docker-окружения, CI/CD и выпуск в production', items: ['Docker', 'GitLab CI', 'GitHub Actions', 'Nginx', 'Linux'] },
+    { title: 'Инструменты', note: 'Ежедневная работа команды', items: ['Git', 'Figma', 'Postman', 'ESLint'] },
+  ],
   resumeHighlights: [
     'Более 8 лет разработки и развития корпоративных и государственных информационных систем.',
     'Путь от Junior через Middle, Senior и Team Lead до технического директора.',
