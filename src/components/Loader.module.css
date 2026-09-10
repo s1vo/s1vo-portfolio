@@ -1,0 +1,76 @@
+/* Colors and timing are scoped here; the site's own tokens are not used on purpose. */
+.root {
+  --bg: #f6f4ef; --ink: #1c1d19; --accent: #f04b22; --line: #d5d2ca;
+  --ease: cubic-bezier(0.2, 0, 0, 1);
+  --exit: 850ms;
+  position: fixed; inset: 0; z-index: 1000;
+  display: grid; grid-template-rows: auto 1fr auto;
+  padding: clamp(18px, 3vw, 32px) clamp(20px, 4vw, 48px);
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-sans, 'Manrope', sans-serif);
+  transition: transform var(--exit) var(--ease);
+  will-change: transform;
+}
+.leaving { transform: translateY(-100%); }
+
+.top { display: flex; justify-content: space-between; align-items: baseline; }
+.mark { font-size: 22px; font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+.dot { color: var(--accent); }
+.role { font-size: 11px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #6a6a63; }
+
+.center { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(20px, 3vh, 32px); transition: transform 420ms var(--ease), opacity 420ms var(--ease); }
+.leaving .center { transform: translateY(-16px); opacity: 0; }
+.mono { width: clamp(150px, 26vmin, 240px); height: auto; overflow: visible; }
+
+/* M strokes */
+.m { fill: var(--ink); opacity: 0; transform: translateY(10px); animation: mIn 520ms var(--ease) forwards; }
+.m1 { animation-delay: 0ms; }
+.m2 { animation-delay: 130ms; }
+.m3 { animation-delay: 260ms; }
+.m4 { animation-delay: 390ms; }
+@keyframes mIn { to { opacity: 1; transform: translateY(0); } }
+
+/* S: contour draw, then a short orange run along the path */
+.s { fill: none; stroke: var(--ink); stroke-width: 22; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 800ms var(--ease) 620ms forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.sRun { fill: none; stroke: var(--accent); stroke-width: 22; stroke-linecap: round; stroke-dasharray: 0.16 1; stroke-dashoffset: 1.16; opacity: 0; animation: run 720ms linear 980ms forwards; }
+@keyframes run { 0% { opacity: 1; stroke-dashoffset: 1.16; } 85% { opacity: 1; } 100% { opacity: 0; stroke-dashoffset: -0.2; } }
+
+.point { fill: var(--accent); transform-origin: 188px 208px; transform: scale(0); animation: pop 380ms var(--ease) 1560ms forwards; }
+@keyframes pop { to { transform: scale(1); } }
+
+.nameMask { overflow: hidden; }
+.name { margin: 0; font-size: clamp(20px, 2.6vmin, 26px); font-weight: 700; letter-spacing: -0.02em; transform: translateY(110%); animation: rise 560ms var(--ease) 1620ms forwards; }
+@keyframes rise { to { transform: translateY(0); } }
+
+.words { margin: 0; display: flex; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: 0.02em; color: #6a6a63; opacity: 0; animation: fade 400ms var(--ease) 1700ms forwards; }
+@keyframes fade { to { opacity: 1; } }
+.sep { color: var(--line); }
+.w1, .w2, .w3 { animation: accent 600ms var(--ease) forwards; }
+.w1 { animation-delay: 1800ms; } .w2 { animation-delay: 1950ms; } .w3 { animation-delay: 2100ms; }
+@keyframes accent { 0% { color: #6a6a63; } 40% { color: var(--accent); } 100% { color: var(--ink); } }
+
+.bottom { display: grid; gap: 10px; }
+.bar { height: 1px; background: var(--line); }
+.bar i { display: block; height: 100%; background: var(--ink); transform-origin: left; transform: scaleX(0); transition: transform 500ms var(--ease); }
+.ready .bar i { background: var(--accent); }
+.meta { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; letter-spacing: 0.06em; color: #6a6a63; }
+.pct { font-variant-numeric: tabular-nums; }
+.ready .meta { color: var(--ink); }
+
+/* landscape phones: tighten the centre */
+@media (max-height: 480px) {
+  .center { gap: 12px; }
+  .mono { width: clamp(90px, 28vmin, 140px); }
+  .name { font-size: 18px; }
+}
+
+/* reduced motion: static mark, short fade */
+.reduced .m, .reduced .s, .reduced .point, .reduced .name, .reduced .words { animation: none; opacity: 1; transform: none; stroke-dashoffset: 0; }
+.reduced .sRun { display: none; }
+.reduced .w1, .reduced .w2, .reduced .w3 { color: var(--ink); }
+.reduced { transition: opacity 300ms var(--ease); }
+.reduced.leaving { transform: none; opacity: 0; }
+.reduced .center { transition: none; }
+.reduced.leaving .center { transform: none; opacity: 1; }
+.reduced .bar i { transition: none; }
