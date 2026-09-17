@@ -207,6 +207,22 @@ export const products: Product[] = [
     demonstrates: ['Сложная бизнес-логика', 'RBAC', 'Mobile-first', 'Email-рассылки'],
     logo: '/images/products/logo-trainer-journal.svg',
   },
+  {
+    id: 'vaultora', slug: 'vaultora', name: 'Vaultora', tagline: 'Zero-knowledge Password Manager', status: 'Работает',
+    description: 'Self-hosted менеджер паролей, в котором сервер хранит только шифротекст. Мастер-пароль не покидает браузер: из него через Argon2id выводятся ключи, данные шифруются AES-256-GCM на клиенте, поэтому украденная база или бэкап бесполезны без мастер-пароля или ключа восстановления.',
+    features: [
+      'Шифрование на клиенте: Argon2id → AES-256-GCM, ключи живут только в памяти вкладки',
+      'Ключ восстановления, который разворачивает хранилище и задаёт новый мастер-пароль',
+      'Типы записей: логины, карты, заметки, Wi-Fi, серверы, базы, API-ключи, SSH и свои поля',
+      'Анализ безопасности: слабые, повторяющиеся и утёкшие пароли через HIBP по k-анонимности',
+      'Автоблокировка, очистка буфера обмена, TOTP-коды, журнал событий и сессии',
+      'Импорт из Chrome, Bitwarden, 1Password и Яндекса, шифрованный экспорт, английский и русский',
+    ],
+    stack: ['React', 'TypeScript', 'Fastify', 'Prisma', 'PostgreSQL', 'Web Crypto', 'Docker'],
+    demonstrates: ['Криптография на клиенте', 'Security', 'System Design', 'Fullstack'],
+    screenshot: { src: '/images/products/vaultora.png', width: 1440, height: 888, alt: 'Интерфейс Vaultora: список записей и детали' },
+    logo: '/images/products/logo-vaultora.svg',
+  },
 ];
 
 export const findProduct = (slug: string | undefined) => products.find((p) => p.slug === slug);
