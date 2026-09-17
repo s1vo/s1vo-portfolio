@@ -31,16 +31,18 @@ export function ProductPage() {
             {product.stack.map((t) => <li key={t} className="tag">{t}</li>)}
           </ul>
         </header>
-        <figure className={p.figure}>
-          <img
-            src={product.screenshot.src}
-            width={product.screenshot.width}
-            height={product.screenshot.height}
-            alt={product.screenshot.alt}
-            className={p.shot}
-            fetchpriority="high"
-          />
-        </figure>
+        {product.screenshot && (
+          <figure className={p.figure}>
+            <img
+              src={product.screenshot.src}
+              width={product.screenshot.width}
+              height={product.screenshot.height}
+              alt={product.screenshot.alt}
+              className={p.shot}
+              fetchpriority="high"
+            />
+          </figure>
+        )}
 
         <div className={s.blocks}>
           <section className={s.block} aria-labelledby="pr-about">
@@ -55,7 +57,7 @@ export function ProductPage() {
           </section>
         </div>
 
-        <nav className={s.others} aria-label="Другие продукты">
+        {others.length > 0 && <nav className={s.others} aria-label="Другие продукты">
           <h2 className={s.h2}>Другие продукты</h2>
           <ul className={s.otherList}>
             {others.map((x) => (
@@ -67,7 +69,7 @@ export function ProductPage() {
               </li>
             ))}
           </ul>
-        </nav>
+        </nav>}
       </article>
       <Contact />
     </>

@@ -13,15 +13,21 @@ export function Products() {
         {products.map((p) => (
           <li key={p.id}>
             <Link to={`/products/${p.slug}`} className={s.card} aria-label={`Продукт: ${p.name} — ${p.tagline}`}>
-              <img
-                src={p.screenshot.src}
-                width={p.screenshot.width}
-                height={p.screenshot.height}
-                alt=""
-                loading="lazy"
-                decoding="async"
-                className={s.shot}
-              />
+              {p.screenshot ? (
+                <img
+                  src={p.screenshot.src}
+                  width={p.screenshot.width}
+                  height={p.screenshot.height}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  className={s.shot}
+                />
+              ) : (
+                <div className={`${s.shot} ${s.placeholder}`}>
+                  <img src={p.logo} width={64} height={64} alt="" />
+                </div>
+              )}
               <div className={s.body}>
                 <div className={s.titleRow}>
                   <img src={p.logo} width={28} height={28} alt="" className={s.logo} />
@@ -29,6 +35,7 @@ export function Products() {
                   <span className={s.tagline}>{p.tagline}</span>
                   <span className={`arrow-circle ${s.arrow}`} aria-hidden="true"><ArrowRight size={16} /></span>
                 </div>
+                {p.status === 'В разработке' && <span className={s.status}>{p.status}</span>}
                 <ul className={s.tags} aria-label="Стек">
                   {p.stack.slice(0, 4).map((t) => <li key={t} className="tag">{t}</li>)}
                 </ul>

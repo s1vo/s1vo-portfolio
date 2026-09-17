@@ -171,103 +171,41 @@ export type Product = {
   stack: string[];
   demonstrates: string[];
   status: string;
-  screenshot: Image;
+  screenshot?: Image;
   logo: string;
 };
 
-const shot = (id: string, name: string): Image => ({ src: `/images/products/${id}.webp`, width: 1440, height: 900, alt: `Интерфейс ${name}` });
-const logo = (id: string) => `/images/products/logo-${id}.svg`;
-
 export const products: Product[] = [
   {
-    id: 'nexus', slug: 'nexus', name: 'Nexus', tagline: 'Server Control Center', status: 'В разработке',
-    description: 'Единая панель управления серверами и Docker-контейнерами: метрики CPU, RAM и диска в реальном времени, потоковые логи, health-check сервисов, перезапуск и алерты.',
-    features: ['Серверы и Docker-контейнеры в одном списке', 'CPU / RAM / Disk в реальном времени', 'Realtime-логи сервисов', 'Health-check и рестарты сервисов', 'Алерты по порогам'],
-    stack: ['React', 'Next.js', 'NestJS', 'PostgreSQL', 'RabbitMQ', 'Docker', 'Nginx'],
-    demonstrates: ['System Design', 'Realtime', 'DevOps', 'Backend'],
-    screenshot: shot('nexus', 'Nexus'),
-    logo: logo('nexus'),
+    id: 'agentdesk', slug: 'agentdesk', name: 'Agentdesk', tagline: 'Task Tracker for AI Agents', status: 'Работает',
+    description: 'Таск-трекер, в который пишут задачи вы, Claude Code и Codex. Агент через MCP находит работу в коде и заводит задачу, а вы видите её во «Входящих» и решаете, что делать дальше.',
+    features: [
+      'Агенты создают задачи через MCP: чеклист, приоритет и стабильный externalId без дублей',
+      'Канбан с drag-and-drop (мышь, touch, клавиатура), список с серверной сортировкой и фильтрами в URL',
+      'Токены агентов ограничены проектами и операциями, отзыв действует со следующего запроса',
+      'Оптимистичные блокировки, Idempotency-Key, атомарная нумерация и append-only история',
+      'Адаптивный интерфейс от 375 px',
+      'Self-hosted: Docker Compose, Caddy с HTTPS, бэкап и проверка восстановления',
+    ],
+    stack: ['React', 'TypeScript', 'Fastify', 'PostgreSQL', 'MCP', 'Drizzle', 'Docker'],
+    demonstrates: ['AI-агенты / MCP', 'System Design', 'Security', 'Fullstack'],
+    screenshot: { src: '/images/products/agentdesk.png', width: 1440, height: 900, alt: 'Канбан-доска Agentdesk' },
+    logo: '/images/products/logo-agentdesk.png',
   },
   {
-    id: 'forge', slug: 'forge', name: 'Forge', tagline: 'Self-hosted Deployment Platform', status: 'В разработке',
-    description: 'Собственная платформа деплоя: репозиторий на GitHub или GitLab превращается в Docker-образ и выкатывается через очередь сборок, с переменными окружения, логами и откатом.',
-    features: ['Git-репозиторий → build → Docker → deploy', 'Environment variables по окружениям', 'Логи сборки в реальном времени', 'Rollback на предыдущий деплой', 'Очередь сборок на RabbitMQ'],
-    stack: ['React', 'NestJS', 'Docker', 'GitLab / GitHub', 'Nginx', 'RabbitMQ'],
-    demonstrates: ['CI/CD', 'Docker', 'Очереди', 'Архитектура'],
-    screenshot: shot('forge', 'Forge'),
-    logo: logo('forge'),
-  },
-  {
-    id: 'vault', slug: 'vault', name: 'Vault', tagline: 'Password Manager', status: 'В разработке',
-    description: 'Менеджер паролей с шифрованием на клиенте: хранилища, папки и теги, генератор паролей, история изменений и двухфакторная аутентификация.',
-    features: ['Хранилища, папки и теги', 'Генератор паролей', 'Encrypted storage: шифрование на клиенте', 'История изменений записи', '2FA и аудит безопасности'],
-    stack: ['Next.js', 'NestJS', 'PostgreSQL', 'Docker'],
-    demonstrates: ['Security', 'Полноценный Fullstack'],
-    screenshot: shot('vault', 'Vault'),
-    logo: logo('vault'),
-  },
-  {
-    id: 'pulse', slug: 'pulse', name: 'Pulse', tagline: 'Monitoring Platform', status: 'В разработке',
-    description: 'Мониторинг сайтов и API из нескольких регионов: uptime, задержки, срок SSL-сертификатов, история инцидентов и уведомления через webhook и email.',
-    features: ['Мониторинг сайтов и API', 'Uptime и latency по регионам', 'Контроль SSL-сертификатов', 'История инцидентов', 'Webhook / email-уведомления'],
-    stack: ['React', 'NestJS', 'PostgreSQL', 'RabbitMQ'],
-    demonstrates: ['Background jobs', 'Аналитика', 'API'],
-    screenshot: shot('pulse', 'Pulse'),
-    logo: logo('pulse'),
-  },
-  {
-    id: 'flow', slug: 'flow', name: 'Flow', tagline: 'API Development Studio', status: 'В разработке',
-    description: 'Студия для работы с REST и SOAP API: коллекции запросов, окружения с переменными, история вызовов и импорт из OpenAPI.',
-    features: ['REST / SOAP-клиент', 'Окружения и переменные', 'Коллекции запросов', 'История вызовов', 'Импорт OpenAPI и WSDL'],
-    stack: ['React', 'TypeScript', 'Node.js', 'OpenAPI'],
-    demonstrates: ['Developer Tools', 'REST / SOAP'],
-    screenshot: shot('flow', 'Flow'),
-    logo: logo('flow'),
-  },
-  {
-    id: 'mesh', slug: 'mesh', name: 'Mesh', tagline: 'Architecture Designer', status: 'В разработке',
-    description: 'Визуальный редактор архитектуры: сервисы, базы данных и очереди на одной схеме, описание связей между ними и экспорт документации.',
-    features: ['Визуальные схемы сервисов, БД и очередей', 'Описание связей и протоколов', 'Свойства и владельцы компонентов', 'Экспорт документации: Markdown, Mermaid, PNG'],
-    stack: ['React', 'TypeScript', 'NestJS', 'PostgreSQL'],
-    demonstrates: ['System Design', 'Frontend-архитектура'],
-    screenshot: shot('mesh', 'Mesh'),
-    logo: logo('mesh'),
-  },
-  {
-    id: 'drop', slug: 'drop', name: 'Drop', tagline: 'Private Cloud Storage', status: 'В разработке',
-    description: 'Приватное облачное хранилище на S3: файлы и папки, предпросмотр, загрузка частями с возобновлением, публичные ссылки и права доступа.',
-    features: ['Файлы, папки и предпросмотр', 'Загрузка частями с возобновлением', 'Публичные ссылки с паролем и сроком', 'Права доступа участникам', 'Версии файлов в S3'],
-    stack: ['Next.js', 'NestJS', 'PostgreSQL', 'S3', 'Docker'],
-    demonstrates: ['Storage', 'Permissions', 'Backend-архитектура'],
-    screenshot: shot('drop', 'Drop'),
-    logo: logo('drop'),
-  },
-  {
-    id: 'relay', slug: 'relay', name: 'Relay', tagline: 'Integration Hub', status: 'В разработке',
-    description: 'Хаб интеграций: подключение сторонних API и webhook, конвейер трансформации событий, повторные попытки и dead-letter queue на RabbitMQ.',
-    features: ['Подключение сторонних API и webhook', 'Transformation pipeline', 'Retry с экспоненциальной задержкой', 'Dead-letter queue и разбор ошибок', 'Идемпотентность по идентификатору события'],
-    stack: ['React', 'NestJS', 'RabbitMQ', 'PostgreSQL'],
-    demonstrates: ['Интеграции', 'RabbitMQ', 'Reliability'],
-    screenshot: shot('relay', 'Relay'),
-    logo: logo('relay'),
-  },
-  {
-    id: 'querylab', slug: 'querylab', name: 'QueryLab', tagline: 'Database Explorer', status: 'В разработке',
-    description: 'Инструмент для работы с PostgreSQL: подключения, SQL-редактор, таблицы и связи, план выполнения EXPLAIN и список медленных запросов.',
-    features: ['Подключения к PostgreSQL', 'SQL-редактор с подсветкой', 'Таблицы и связи между ними', 'EXPLAIN ANALYZE с подсказками', 'Медленные запросы за период'],
-    stack: ['React', 'NestJS', 'PostgreSQL'],
-    demonstrates: ['Базы данных', 'Performance', 'Developer Tooling'],
-    screenshot: shot('querylab', 'QueryLab'),
-    logo: logo('querylab'),
-  },
-  {
-    id: 'workspace', slug: 'workspace', name: 'Workspace', tagline: 'Team Platform', status: 'В разработке',
-    description: 'Платформа для команды: проекты, задачи на доске, документы, комментарии, лента активности и роли с разграничением прав.',
-    features: ['Проекты и задачи на kanban-доске', 'Документы с версиями', 'Комментарии и упоминания', 'Лента активности', 'Роли и права: RBAC'],
-    stack: ['Next.js', 'NestJS', 'PostgreSQL', 'RabbitMQ'],
-    demonstrates: ['RBAC', 'Сложная бизнес-логика'],
-    screenshot: shot('workspace', 'Workspace'),
-    logo: logo('workspace'),
+    id: 'trainer-journal', slug: 'trainer-journal', name: 'Журнал тренера', tagline: 'CRM для спортивной секции', status: 'В разработке',
+    description: 'Веб-приложение для спортивной секции: база клиентов с контактами родителей, группы и расписание, отметка посещаемости с телефона, учёт абонементов по количеству занятий, email-рассылки и выгрузка в Excel.',
+    features: [
+      'Отметка посещаемости с телефона за минуту: крупные кнопки и индикатор абонемента у каждого клиента',
+      'Абонементы на период с автосписанием, неоплаченными посещениями и автозачётом при оплате',
+      'Отработки пропущенных занятий в других группах',
+      'Группы с расписанием и автогенерацией занятий без дублей',
+      'Email-рассылки с изображениями, предпросмотром, отпиской и отчётом по доставке',
+      'Два кабинета, администратор и тренер, с правами на уровне сервера; выгрузки в XLSX',
+    ],
+    stack: [],
+    demonstrates: ['Сложная бизнес-логика', 'RBAC', 'Mobile-first', 'Email-рассылки'],
+    logo: '/images/products/logo-trainer-journal.svg',
   },
 ];
 
